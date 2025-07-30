@@ -1,0 +1,237 @@
+<!DOCTYPE html> <!-- Declares the document type as HTML5 -->
+<html lang="en"> <!-- Root element that wraps all content -->
+
+<head> <!-- Contains metadata like the title and links to CSS -->
+    <title> Sun study HTML </title>
+</head>
+
+<body> <!-- Contains the main content of the page -->
+    
+    <h1 id="basic-html"> Basic HTML Tag </h1> <!-- Main heading, h1 is the most important, followed by h6 -->
+        <h2 id="headings"> 1. Tag Headings </h2>
+            <!-- Headings from h1 to h6 are used to define document headings, with h1 being the highest level -->
+            <p>Example:</p>
+            <h3>Heading Level 3</h3>
+            <h6>Heading Level 6 (least important)</h6>
+
+        <h2 id="paragraph"> 2. Tag Paragraph</h2>
+            <!-- The <p> tag defines a paragraph, adding space before and after automatically -->
+            <p> This is a paragraph </p>
+            <p> This is another paragraph </p>
+            <!-- Use <strong> for bold text with semantic meaning -->
+            <p> This is a <strong>bold</strong> word </p> 
+            <!-- Use <em> for italic text with semantic meaning --> 
+            <p> This is an <em>italic</em> word </p> 
+    
+        <h2 id="image"> 3. Tag Image </h2>
+            <!-- The <img> tag inserts an image with attributes like src (source), alt (alternative text), height, and width -->
+            <img src="https://www.uow.edu.au/assets/logos/logo-svgs/logo-horizontal.svg" height="300" width="200" alt="UOW Logo" /> 
+            <p>Annotation: The alt attribute provides a text description if the image fails to load.</p>
+    
+        <h2 id="anchor"> 4. Tag Anchor </h2>
+            <!-- The <a> tag creates hyperlinks with the href attribute -->
+            <h3> "href" Attribute </h3>
+                <h4> Absolute Link </h4>
+                <p>Example:</p>
+                <a href="http://www.uow.edu.au" target="_blank">Visit UOW</a> 
+                <p>Annotation: The target="_blank" opens the link in a new tab.</p>
+
+                <h4> Relative Link </h4>
+                <p>Example:</p>
+                <a href="contact.html">Contact us</a> 
+                <p>Annotation: Relative links point to files within the same directory.</p>
+            <h3> _blank </h3>
+            <p>Example:</p>
+            <a href="http://www.uow.edu.au" target="_blank">
+            <p>Annotation: Opens the link in a new window or tab.</p>
+            </a>
+            <h3> _self </h3>
+            <p>Example:</p>
+            <a href="http://www.uow.edu.au" target="_self">Visit UOW in same tab</a>
+            <p>Annotation: Opens the link in the same frame (default behavior).</p>
+
+        <h2 id="list"> 5. Tag List </h2>
+            <h3> 5.1. Unordered List </h3>
+            <!-- The <ul> tag defines an unordered list with <li> for list items -->
+                <p>Example:</p>
+                <ul> <!-- unordered list -->
+                    <li><b>CSIT884</b>: Mon 8:30 - 10:00 Lecture </li> <!-- list item -->
+                    <li> Item 2 </li> 
+                    <li> Item 3 </li> 
+                </ul>
+                <p>Annotation: Items are displayed with bullets.</p>
+            
+            <h3> 5.2. Ordered List </h3>
+            <!-- The <ol> tag defines an ordered list with <li> for numbered items -->
+                <p>Example:</p>
+                <ol> <!-- ordered list -->
+                    <li>CSIT884: Mon 8:30 - 10:30 Lecture </li> 
+                    <li> Second item </li> 
+                    <li> Third item </li>
+                </ol>
+                <p>Annotation: Items are numbered automatically.</p>
+
+            <h3> 5.3. Description List </h3>
+            <!-- The <dl> tag defines a description list with <dt> for terms and <dd> for definitions -->
+                <p>Example:</p>
+                <dl> <!-- description list --> 
+                    <dt>CSIT884</dt> <!-- description item -->
+                    <dd>Mon 8:30 - 10:30 Lecture</dd> <!-- description definition -->
+                </dl>
+                <p>Annotation: Used to display name-value pairs.</p>
+
+        <h2 id="table"> 6. Table </h2>
+        <!-- The <table> tag creates a table with <tr> for rows, <th> for headers, and <td> for data -->
+            <p>Attributes:</p>
+            <p><code>border</code>: Sets border thickness (e.g., border="1")</p>
+            <p><code>width</code>: Sets column width (e.g., width="50%" or width="150px")</p>
+            <p><code>align</code>: Aligns content horizontally (left, center, right)</p>
+            <p><code>valign</code>: Aligns content vertically (top, middle, bottom)</p>
+            <p><code>&lt;tr&gt;</code>: Table row</p>
+            <p><code>&lt;th&gt;</code>: Table header</p>
+            <p><code>&lt;td&gt;</code>: Table data</p>
+            <p><code>&lt;caption&gt;</code>: Table caption</p>
+            <p>Example:</p>
+            <table border="1" width="50%">
+                <caption>User Information</caption>
+                <tr>
+                    <th width="20%">Username</th>
+                    <th width="40%">First Name</th>
+                    <th width="40%">Last Name</th>
+                </tr>
+                <tr>
+                    <td align="center">jsmith</td>
+                    <td align="right">John</td>
+                    <td align="right">Smith</td>
+                </tr>
+                <tr>
+                    <td align="center">mlee</td>
+                    <td align="right">Mary</td>
+                    <td align="right">Lee</td>
+                </tr>
+            </table>
+            <p>Annotation: The caption provides a title for the table, and attributes like align enhance presentation.</p>
+
+        <h2 id="formatting"> 7. Formatting Text </h2>
+        <!-- Tags to format text with specific meanings -->
+            <p>Example:</p>
+            <p><strong>Bold</strong>: In đậm (bold).</p>
+            <p><em>Italic</em>: In nghiêng (italic).</p>
+            <p><mark>Highlighted</mark>: Đánh dấu (highlight).</p>
+            <p><del>Strikethrough</del>: Gạch ngang (deleted text).</p>
+            <p><ins>Underlined</ins>: Gạch chân (inserted text).</p>
+            <p><sup>Superscript</sup>: Chỉ số trên (superscript), e.g., x<sup>2</sup> displays as x².</p>
+            <p>Annotation: These tags add semantic meaning and visual styling to text.</p>
+
+        <h2 id="linebreak"> 8. Line Break </h2>
+        <!-- Tags to control layout and spacing -->
+            <p>Example:</p>
+            <hr> <!-- Horizontal rule -->
+            <p>Line break: <br> This text continues on a new line.</p>
+            <pre>preformatted text: element is shown in monospace, it preserves the character and line spacing</pre>
+            <blockquote>block quotations</blockquote>
+            <p>Annotation: <code>&lt;hr&gt;</code> creates a horizontal line, <code>&lt;br&gt;</code> breaks a line, <coed>&lt;pre&gt;</coed> preserves formatting, and <code>&lt;blockquote&gt;</code> indents quoted text.</p>
+
+    <h1 id="attributes"> Attributes </h1>
+    <!-- Attributes provide additional information to HTML tags in the format name="value" -->
+        <img src="https://www.uow.edu.au/assets/logos/logo-svgs/logo-horizontal.svg" alt="UOW Logo" height="300" width="200" />
+        <p>Annotation: This image uses src, alt, height, and width attributes.</p>
+
+        <h2 id="popular-attributes"> 1. Popular attributes </h2>
+            <p><code>id</code>: Unique identifier for an element, used for linking or applying CSS</p>
+            <p><code>href</code>: Link destination</p>
+            <p><code>src</code>: Path to a resource (e.g., image, file)</p>
+            <p><code>alt</code>: Alternative text for images</p>
+            <p><code>target</code>: Specifies how to open a link (e.g., target="_blank")</p>
+            <p>Annotation: Attributes enhance tag functionality and accessibility.</p>
+
+        <h2 id="character-entity"> 2. Character entity </h2>
+        <p>Some characters are reserved in HTML. Reserved characters in HTML must be replaced with character entities.</p>
+            <table border="1">
+                <tr>
+                    <th>Character</th>
+                    <th>Entity</th>
+                    <th>Meaning</th>
+                </tr>
+                <tr>
+                    <td>(non-breaking space)</td>
+                    <td>&amp;nbsp;</td>
+                    <td>Non-breaking space</td>
+                </tr>
+                <tr>
+                    <td>&lt;</td>
+                    <td>&amp;lt;</td>
+                    <td>Is less than</td>
+                </tr>
+                <tr>
+                    <td>&gt;</td>
+                    <td>&amp;gt;</td>
+                    <td>Is greater than</td>
+                </tr>
+                <tr>
+                    <td>&amp;</td>
+                    <td>&amp;amp;</td>
+                    <td>Ampersand</td>
+                </tr>
+                <tr>
+                    <td>&quot;</td>
+                    <td>&amp;quot;</td>
+                    <td>Double quote</td>
+                </tr>
+                <tr>
+                    <td>&apos;</td>
+                    <td>&amp;apos;</td>
+                    <td>Single quote (apostrophe)</td>
+                </tr>
+                <tr>
+                    <td>&deg;</td>
+                    <td>&amp;deg;</td>
+                    <td>Degree</td>
+                </tr>
+                <tr>
+                    <td>&copy;</td>
+                    <td>&amp;copy;</td>
+                    <td>Copyright</td>
+                </tr>
+            </table>
+            <p>Annotation: Entities like <code>&amp;nbsp;</code> prevent line breaks, while others represent reserved characters.</p>
+    
+    <h1 id="presenting-code"> Presenting Code in HTML </h1>
+    <!-- The <pre> tag preserves formatting, and <code> indicates code snippets -->
+        <p>Example:</p>
+        <pre>
+            <code>
+                &lt;p&gt;This is a paragraph&lt;/p&gt;
+                &lt;img src="image.jpg" alt="Description" /&gt;
+            </code>
+        </pre>
+        <p>Annotation: The <code>&lt;pre&gt;</code> tag keeps spaces and line breaks, while <code>&lt;code&gt;</code> styles text as code.</p>
+
+        <p>Unicode code as text: &amp;#x1F600;</p>
+        <pre>
+            Code example: &amp;#x1F600;
+        </pre>
+        <p>Actual icon: &#x1F600;</p>
+
+    <h1 id="links-within-page"> Links Within the Page </h1>
+        <!-- Use <a> with href and id to link to sections within the same page -->
+        <p>Example Links:</p>
+        <ul>
+            <li><a href="#basic-html">Go to Basic HTML Tags</a></li>
+            <li><a href="#headings">Go to Tag Headings</a></li>
+            <li><a href="#paragraph">Go to Tag Paragraph</a></li>
+            <li><a href="#image">Go to Tag Image</a></li>
+            <li><a href="#anchor">Go to Tag Anchor</a></li>
+            <li><a href="#list">Go to Tag List</a></li>
+            <li><a href="#table">Go to Table</a></li>
+            <li><a href="#formatting">Go to Formatting Text</a></li>
+            <li><a href="#linebreak">Go to Line Break</a></li>
+            <li><a href="#attributes">Go to Attributes</a></li>
+            <li><a href="#popular-attributes">Go to Popular Attributes</a></li>
+            <li><a href="#character-entity">Go to Character Entity</a></li>
+            <li><a href="#presenting-code">Go to Presenting Code</a></li>
+            <li><a href="#links-within-page">Go to Links Within the Page</a></li>
+        </ul>
+        <p>Annotation: Add id attributes to target sections, e.g., id="headings", for internal navigation.</p>
+</body>
+</html>
