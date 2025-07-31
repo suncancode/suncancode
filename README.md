@@ -1,0 +1,3 @@
+This repository is my personal space to document and showcase the knowledge, skills, and hands-on practice I’ve gained while studying Master of Computer Science. As a passionate learner, I created this portfolio to organize my progress, revisit key concepts, and share my coding journey with others.
+
+Updating...
