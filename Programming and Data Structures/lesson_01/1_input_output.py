@@ -9,7 +9,6 @@ print("Welcome to Python! ", end="<3")  # Output: Welcome to Python! <3
 first_name = input("Enter your First name: ")
 last_name = input("Enter your Last name: ")
 full_name = first_name + " " + last_name
-first_name = input("Enter your First name: ")
 print("Your name is " + full_name + ".")
 
 # asking for multiple inputs

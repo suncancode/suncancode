@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Basic CSS </title>
+    <style>
+        body {
+            font-family: Calibri;
+            background-color: white;
+            margin: 20px;
+        }
+        h1 {
+            color: black;
+            text-align: center;
+        }
+        h2 {
+            color: #0066cc;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 5px;
+        }
+        p {
+            line-height: 1.6;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        code {
+            background-color: #e9ecef;
+            padding: 2px 5px;
+            border: 1px solid #ced4da;
+            border-radius: 3px;
+        }
+        .example {
+            background-color: #e9f5ff;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <h1><b>CSS Sumary</b></h1>
+    
+    <h2><b>Objectives</b></h2>
+    <p>
+        This lecture aims to: <br />
+        <ul>
+            <li>Understand the need for separating content and style in website.</li>
+            <li>Learn  the 3 different ways to  define web page.</li>
+            <li>Use the CSS language to define styles for web pages.</li>
+        </ul>
+    </p>
+
+    <h2>Three ways to add styling to HTML Elements</h2>
+    <p>
+        CSS can be applied in 3 ways: <br />
+        <ol>
+            <li><b>Inline CSS</b>: Applied directly within HTML elements using the <code>sytle</code> attribute.</li>
+            <li><b>Document (Internal) CSS</b>: Defined within a <code>&lt;style&gt;</code> tag in the HTML <code>&lt;head&gt;</code> section.</li>
+            <li><b>External CSS</b>: Stored in a separate  ".css" file and linked to the HTML file using a <code>&lt;link&gt;</code> tag.</li>
+        </ol>
+    </p>
+
+    <h2><b>Examples of CSS Application</b></h2>
+
+        <h3>1. Inline CSS</h3>
+        <div class="example">
+            <p style="color: blue; font-family: Courier; font-size: 150%; border: 1px solid  black; padding: 10px;">
+                This is a paragraph with inline styling.
+            </p>
+        </div>
+            <p>
+                Inline CSS has the highest precedence and overrides other styles.
+            </p>
+        
+        <h3>2. Document (Internal) CSSS</h3>
+        <div class="example">
+            <style>
+                p.internal-example {
+                    color: green;
+                    font-family: "Times New Roman";
+                    border: 1px solid black;
+                    padding: 10px;
+                }
+            </style>
+            <p class="internal-example">
+                This is a paragraph with internal CSS styling.
+            </p>
+        </div>
+            <p>Internal CSS is defined in the <code>&lt;head&gt;</code> section and applies to elements within the same document.</p>
+
+        <h3>3. External CSS</h3>
+        <p>
+            External CSS would be linked via: <br />
+            <code>&lt;link rel="styleshee" href=style.css"&gr;</code> <br />
+            An example <code>style.css</code> file might contain: <br />
+                <pre>
+                    p {
+                        color: red;
+                        font-size: 16px;
+                    }
+                </pre> <br />
+            External CSS is ideal for maintaining styles across multiple pages.
+        </p>
+
+        <h2><b>Key CSS Concepts</b></h2>
+
+        <h3>Selectors</h3>
+        <p>
+            <ul>
+                <li><b>Element Selector</b>: Target HTML elements  (e.g., <code> { color: blue; }</code>).</li>
+                <li><b>Class Selector</b>: Target elements  with a specific class (e.g., <code>.userinfo { color: purple; }</code>).</li>
+                <li><b>ID Selector</b>: Targets an unique  element by ID (e.g., <code>#userHeading { color: orange; }</code>).</li>
+            </ul>
+        </p>
+        
+        <h3>Pseudo-Classes</h3>
+        <div class="example">
+            <style>
+                a:link { color: red; }
+                a:visited { color: green; }
+                h1:hover { color: blue; }
+            </style>
+            <p><a href="http://www.example.com">Example Link</a> (changes color when visited).</p>
+            <h1>Hover over me!</h1>
+        </div>
+        <p>Pseudo-classes like <code>:link</code>, <code>:visited</code>, and <code>:hover</code> add dynamic styling.</p>
+
+        <h3>Precedence Rules</h3>
+        <p>
+            CSS follows a hierarchy:
+            <ul>
+                <li>Inline CSS overrides Document CSS.</li>
+                <li>Document CSS overrides External CSS.</li>
+            </ul>
+            For example, if an external CSS sets <code>p { color: black; }</code>, a document CSS can override it with <code>p { color: blue; }</code>, and inline CSS can further override with <code style="color: red;">this text</code>.
+        </p>
+
+        <h3>Common Properties</h3>
+        <p>
+            <ul>
+                <li><code>color</code>: Sets text color (e.g., <code>color: #D3D3D3;</code> for light grey).</li>
+                <li><code>font-family</code>: Sets font (e.g., <code>font-family: Courier;</code>).</li>
+                <li><code>font-size</code>: Sets text size (e.g., <code>font-size: 150%;</code>).</li>
+                <li><code>border</code>: Adds a border (e.g., <code>border: 1px solid black;</code>).</li>
+                <li><code>padding</code>: Adds space inside an element (e.g., <code>padding: 10px;</code>).</li>
+                <li><code>background-color</code>: Sets background color (e.g., <code>background-color: lightgrey;</code>).</li>
+            </ul>
+        </p>
+    
+
+</body>
+</html>
+
