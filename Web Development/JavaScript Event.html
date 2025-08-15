@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JavaScript Events</title>
+</head>
+
+<body>
+    <h1>JavaScript Events</h1>
+
+    <h2>1. Events Overview</h2>
+    <p>Events control user interactions (e.g., clicks, mouse movements). Associate handlers with HTML elements using attributes like onClick, onMouseOver.</p>
+    <pre>
+        &lt;button onClick="handlerFunction1()"&gt;Click me&lt;/button&gt;
+        &lt;span onMouseOver="handlerFunction2()"&gt;some text&lt;/span&gt;
+    </pre>
+    <p><strong>Explanation and Usage:</strong> When an event occurs (e.g., click), the specified function runs. Use functions for complex logic. Attach to buttons, images, or text for interactivity. Visual Demo: Hover over this text: <span onmouseover="alert('Hovered!');">Hover me!</span></p>
+
+    <h2>2. onClick Event</h2>
+    <p>Triggered when an element (button, image) is clicked.</p>
+    <pre>
+        &lt;script&gt;
+            function cat(){
+                alert("Don’t click me, click the dog!");
+            }
+            function dog(){
+                alert("I don’t mind being clicked!");
+            }
+        &lt;/script&gt;
+
+        &lt;img onClick="cat()" src="cat.png" /&gt;
+        &lt;img onClick="dog()" src="dog.png" /&gt;
+    </pre>
+    <p><strong>Explanation and Usage:</strong> Useful for buttons or links. Attach to <img> for clickable images. Visual Demo: <button onclick="alert('Clicked!');">Click me!</button></p>
+
+    <h2>3. onLoad Event</h2>
+    <p>Triggered after an element's resource loads (e.g., page or image).</p>
+    <pre>
+        &lt;script&gt;
+            function greeting(){
+                alert("Welcome to my website!");
+            }
+        &lt;/script&gt;
+
+        &lt;body onLoad="greeting()"&gt;
+    </pre>
+    <p><strong>Explanation and Usage:</strong> Use on <body> for page load actions (e.g., welcome message). On <img> for image load confirmation. Ideal for initializing scripts after content loads.</p>
+
+    <h2>4. onFocus Event</h2>
+    <p>Triggered when an element gains focus (e.g., clicking into a text field).</p>
+    <pre>
+        &lt;input type="text" onFocus="..." /&gt;
+        &lt;textarea onFocus="..."&gt;&lt;/textarea&gt;
+        &lt;select onFocus="..."&gt;&lt;/select&gt;
+    </pre>
+    <p><strong>Explanation and Usage:</strong> Use for form validation or hints (e.g., change background on focus). Attach to inputs for user feedback. Visual Demo: <input type="text" onfocus="alert('Focused!');" placeholder="Click here"></p>
+
+    <h2>5. onBlur Event</h2>
+    <p>Triggered when an element loses focus (e.g., tabbing out of a field).</p>
+    <pre>
+        &lt;input type="text" onBlur="..." /&gt;
+        &lt;textarea onBlur="..."&gt;&lt;/textarea&gt;
+        &lt;select onBlur="..."&gt;&lt;/select&gt;
+    </pre>
+    <p><strong>Explanation and Usage:</strong> Use for validation after input (e.g., check email format on blur). Pairs well with onFocus for form interactions. Visual Demo: <input type="text" onblur="alert('Blurred!');" placeholder="Click then tab out"></p>
+
+    <h2>6. onChange Event</h2>
+    <p>Triggered when an element's value changes and loses focus.</p>
+    <p><strong>Explanation and Usage:</strong> Useful for forms (e.g., update totals on select change). Attach to <input>, <select>, <textarea> for dynamic updates. Visual Demo: <select onchange="alert('Changed!');"><option>Option 1</option><option>Option 2</option></select></p>
+    <p><strong>Final Notes:</strong> Events make web pages responsive. Combine with functions for complex behavior. Practice attaching events to forms and buttons.</p>
+</body>
+</html>

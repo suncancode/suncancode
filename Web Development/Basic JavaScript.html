@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JavaScript Basics</title>
+</head>
+
+<body>
+    <h1>JavaScript Basics</h1>
+    <p>This website introduces the fundamental of JavaScript, a programming language used to make web pages interactive. It covers basic syntax, inclusiojn methods, variables, datatypes, operators, etc.</p>
+
+    <h2>1. My First JavaScript</h2>
+    <p>JavaScript can be triggered by events like button clicks.<br>Here is an example:</p>
+    <button onclick="sayHiDemo();">Click me for Demo</button>
+    <script>
+        function sayHiDemo() {
+            alert("Hi");
+            console.log("Hi");
+            console.log(1 + 2);
+            document.getElementById("demoOutput").innerHTML = "Check console (F12) for output: Hi and 3";
+        }
+    </script>
+    <p id="demoOutput" style="color: green;"></p>
+    <pre>
+        &lt;button onClick="sayHi();"&gt;
+        Click me
+        &lt;/button&gt;
+
+        &lt;/script&gt;
+        function sayHi() {
+            alert("hi");
+            console.log("hi");
+            console.log(1+2);
+        }
+        &lt;/script&gt;
+    </pre>
+    <p><strong>Explanation and Usage:</strong> The <code>onClick</code> attribute calls the <code>sayHi()</code> function when the button is clicked. <code>alert()</code> shows a pop-up message, and <code>console.log()</code> prints to the browser console (viewable in developer tools, F12 in most browsers). Use this to test simple interactions or debug code.</p>
+
+    <h2>2. Where to Include JavaScript</h2>
+    <p>JavaScript code can be placed anywhere in HTML, but common practices are in the <code>&lt;head&gt;</code> or at the end of the <code>&lt;body&gt;</code>.</p>
+    <ul>
+        <li><strong>In the Head:</strong> For code that needs to load early.</li>
+    <pre>
+        &lt;head&gt;
+        &lt;title&gt;JavaScript Example&lt;/title&gt;
+        &lt;script&gt;
+            function sayHi(){
+                alert("Hi");
+            }
+        &lt;/script&gt;
+        &lt;/head&gt;
+    </pre>
+        <li><strong>At the End of Body:</strong> For better page loading performance.</li>
+    <pre>
+        &lt;script&gt;
+            function sayHi(){
+                alert("Hi");
+            }
+        &lt;/script&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+    </pre>
+    </ul>
+    <p><strong>Explanation and Usage:</strong> Placing scripts at the end of <code>&lt;body&gt;</code> prevents blocking HTML rendering. Use <code>&lt;head&gt;</code> for scripts that define functions needed early. Always wrap code in <code>&lt;script&gt;</code> tags.</p>
+
+    <h2>3. External JavaScript</h2>
+    <p>Instead of embedding code, link to an external .js file:</p>
+    <pre>
+        &lt;script type="text/javascript" src="js/myscript.js"&gt;&lt;/script&gt;
+    </pre>
+    <p>(In myscript.js:)</p>
+    <pre>
+        function sayHi(){
+            alert("Hi");
+        }
+    </pre>
+    <p><strong>Explanation and Usage:</strong> This separates code from HTML for reusability. Place the .js file in a folder like "js/" and link it in your HTML. Ideal for larger projects to keep HTML clean.</p>
+
+    <h2>4. Basic JavaScript Syntax</h2>
+    <p>Statements end with semicolons (;). Comments use // or /* */.</p>
+    <pre>
+        /* This is a multi-line comment */
+        function silly(){
+            alert('Hi'); // Display alert
+            console.log(2+2); // Print 4
+        }
+    </pre>
+    <p><strong>Explanation and Usage:</strong> Semicolons separate statements. Comments document code without execution. Use // for single lines and /* */ for blocks. Always comment complex code for clarity.</p>
+
+    <h2>5. Variables</h2>
+    <p>Use <code>var</code> to declare variables (dynamic typing).</p>
+    <pre>
+        var studentName = "John";
+        var x, y;
+        x = 5;
+        y = x + 2;
+    </pre>
+    <p><strong>Explanation and Usage:</strong> Variables store data. JavaScript is case-sensitive (studentName ≠ StudentName). Dynamic typing means variables can change types (e.g., number to string). Use camelCase or underscore for naming. Undeclared variables are undefined.</p>
+
+    <h2>6. Data Types: Number</h2>
+    <p>Numbers can be integers or floats.</p>
+    <pre>
+        var age = 19;
+        var pi = 3.14;
+    </pre>
+    <p>Arithmetic operators: + (addition), - (subtraction), * (multiplication), / (division), % (modulus).</p>
+    <pre>
+        console.log(5 + 3); // 8
+        console.log(10 % 3); // 1
+    </pre>
+    <p><strong>Explanation and Usage:</strong> Use for calculations. % gives remainder (useful for even/odd checks). Numbers are dynamic, so no type declaration needed.</p>
+
+    <h2>7. Data Types: String</h2>
+    <p>Strings use single or double quotes.</p>
+    <pre>
+        var age = "19";
+        var name = 'John';
+    </pre>
+    <p><strong>Explanation and Usage:</strong> Strings are text. Use + for concatenation (e.g., "Hello " + name). Quotes must match (single or double).</p>
+
+    <p><strong>Final Notes:</strong> Practice in browser console or tools like JSFiddle. JavaScript runs client-side, making pages interactive.</p>
+</body>
+</html>
