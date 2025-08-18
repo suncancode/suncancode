@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q8-JS1</title>
+
+    <script>
+        // Function to execute command based on user input
+        function changeImages() {
+            // Get the image elements by id
+            var leftImage = document.getElementById('leftAnimalImage');
+            var rightImage = document.getElementById('rightAnimalImage');
+
+            // Swap the src attributes of the images
+            var tempSrc = leftImage.src;
+            leftImage.src = rightImage.src;
+            rightImage.src = tempSrc;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Question 8</h1>
+
+    <p>
+        Create a web page and display 2 images of a lion and a frog, side by side. <br><br>
+
+        When the user moves the mouse over either of the images, then the two images swap their places.
+    </p>
+
+    <!-- Display 2 images side by side -->
+    <br><br>
+    <img id="leftAnimalImage" src="https://upload.wikimedia.org/wikipedia/en/thumb/9/94/Simba_%28_Disney_character_-_adult%29.png/165px-Simba_%28_Disney_character_-_adult%29.png" alt="Left Animal Image" style="width: 400px;" onmouseover="changeImages()"> 
+    <img id="rightAnimalImage" src="https://i.pinimg.com/736x/28/d1/e1/28d1e11039734392a275a6ad1c44bd7e.jpg" alt="Right Animal Image" style="width: 400px;" onmouseover="changeImages()"> 
+
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q3-JS1</title>
+    
+    <script>
+        // Function to show image based on button click
+        function showImage(animal) {
+            // Get the image element by id
+            var img = document.getElementById('animalImage');
+
+            // Update img src 
+            if (animal === 'Lion') {
+                img.src = "https://upload.wikimedia.org/wikipedia/en/thumb/9/94/Simba_%28_Disney_character_-_adult%29.png/165px-Simba_%28_Disney_character_-_adult%29.png";
+            } else if (animal === 'Frog') {
+                img.src = "https://i.pinimg.com/736x/28/d1/e1/28d1e11039734392a275a6ad1c44bd7e.jpg";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Question 3</h1>
+
+    <p>
+        Create 2 buttons on a web page: "Lion" and "Frog". <br><br>
+
+        When the user clicks on the button "Lion", a picture of a lion is shown. <br><br>
+
+        When the user clicks on the button "Frog", a picture of a frog is shown. <br><br>
+    </p>
+
+    <!-- Button for Lion -->
+    <button onclick="showImage('Lion')">Lion</button>
+    
+    <!-- Button for Frog -->
+    <button onclick="showImage('Frog')">Frog</button>
+    
+    <!-- Display image -->
+    <br><br>
+    <img id="animalImage" src="" alt="Animal Image" style="width: 400px;">
+</body>
+</html>

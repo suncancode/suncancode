@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q5-JS1</title>
+    
+    <script>
+        // Declare variables to keep track of lion and frog click counts
+        var lionCount = 1
+        var frogCount = 1
+
+        // When user click on Lion Image
+        function countLion() {
+            // Get the span id and update the count for lion
+            document.getElementById("lionCount").innerHTML = lionCount++
+        }
+        
+        // When user click on Frog Image
+        function countFrog() {
+            // Get the span id and update the count for frog
+            document.getElementById("frogCount").innerHTML = frogCount++
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Question 5</h1>
+
+    <p>
+        On a web page, display an image of a lion and an image of a frog. <br><br>
+
+        Under the images, display the following two messages. <br>
+        Number of lion clicks: 0 <br>
+        Number of frog clicks: 0 <br>
+        The two messages are in orange color and green color, respectively. <br><br>
+
+        When the user clicks on the lion image, the lion click count is increased. <br><br>
+
+        When the user clicks on the frog image, the frog click count is increased. <br><br>
+    </p>
+
+    <!-- Image for Lion -->
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/94/Simba_%28_Disney_character_-_adult%29.png/165px-Simba_%28_Disney_character_-_adult%29.png" alt="Lion Picture" onclick="countLion()" style="width: 400px">
+    
+    <!-- Image for Frog -->
+    <img src="https://i.pinimg.com/736x/28/d1/e1/28d1e11039734392a275a6ad1c44bd7e.jpg" alt="Frog Picture" onclick="countFrog()" style="width: 400px">
+
+    <!-- Display click counts -->
+    <br><br>
+    <span style="color: orange;">
+        Number of lion clicks: <span id="lionCount">0</span>
+    </span>
+    <br><br>
+    <span style="color: green;">
+        Number of frog clicks: <span id="frogCount">0</span>
+    </span>
+</body>
+</html>

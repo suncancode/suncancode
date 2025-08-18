@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q7-JS1</title>
+
+    <script>
+        // Function to execute command based on user input
+        function executeCommand() {
+            // Declare variable to hold the image element
+            var image = document.getElementById("animalImage");
+
+            // Declare variable to hold input command
+            var command = document.getElementById("commandInput").value;
+
+            // Execute command depending on user's input
+            if (command == "display lion") {
+                image.src = "https://upload.wikimedia.org/wikipedia/en/thumb/9/94/Simba_%28_Disney_character_-_adult%29.png/165px-Simba_%28_Disney_character_-_adult%29.png";
+            }
+            else if (command == "display frog") {
+                image.src = "https://i.pinimg.com/736x/28/d1/e1/28d1e11039734392a275a6ad1c44bd7e.jpg";
+            }
+            else {
+                alert("Invalid Command")
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Question 7</h1>
+
+    <p>
+        On a web page, displays "Enter command: ", followed by a text field for the user to enter a command. The user can enter a command and press the Enter key to execute the command. <br><br>
+
+        There are two valid commands: "display lion" and "display frog". <br>
+        - When the user enters the command "display lion" and presses Enter key, then an image of a lion is displayed on the webpage. <br>
+        - When the user enters the command "display frog" and presses Enter key, then an image of a frog is displayed on the webpage. <br>
+        - If the user enters an invalid command and presses Enter key then an alert window appears which says "Invalid command". <br><br>
+    </p>
+    
+    <!-- Input field for command -->
+    Enter command: <input type="text" id="commandInput" onchange="executeCommand()">
+
+    <!-- Display image -->
+    <br><br>
+    <img id="animalImage" src="" alt="Animal Image" style="width: 400px;">
+
+</body>
+</html>

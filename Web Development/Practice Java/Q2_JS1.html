@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q2-JS1</title>
+
+    <script>
+        // Function to display message in text field when user clicks on Lion or Frog button
+        function displayText(animal) {
+            // Variable to store message to display
+            var message = "";
+
+            if (animal == "Lion") {
+                message = "The Lion Button is clicked"
+            } 
+            else if (animal = "Frog") {
+                message = "The Frog Button is clicked"               
+            }
+            // Get the id and display corresponding text
+            document.getElementById('display').value = message;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Question 2</h1>
+
+    <p>
+        Create 2 buttons on a web page: "Lion" and "Frog". Below the buttons, display a text field. <br><br>
+
+        When the user clicks on the button "Lion", the text field displays "The Lion Button is clicked". <br><br>
+
+        When the user clicks on the button "Frog", the text field displays "The Frog Button is clicked". <br><br>
+    </p>
+
+    <!-- Button for Lion -->
+    <button onclick="displayText('Lion')">Lion</button>
+    
+    <!-- Button for Frog -->
+    <button onclick="displayText('Frog')">Frog</button>
+    
+    <!-- Text field -->
+    <br><br>
+    <input type="text" id="display" readonly>
+
+</body>
+</html>

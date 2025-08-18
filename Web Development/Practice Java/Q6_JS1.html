@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q6-JS1</title>
+    
+    <script>
+        // Declare frog emoji variable
+        var FROG_EMOJI = "&#x1F438"
+        
+        // Function to add Frog emoji when user click on Frog Image
+        function addEmoji() {
+            // Get the span id and add frog emoji
+            document.getElementById("addFrogEmoji").innerHTML += FROG_EMOJI + " ";
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Question 6</h1>
+
+    <p>
+        On a web page, display an image of a frog. <br><br>
+
+        Each time the user clicks on the frog image, show one more frog face on the page. <br><br>
+
+        Below is what displayed after the user clicked on the frog image 10 times. We can see that the page shows 10 frog faces. We can use the following character entity hex code for the frog face x1F438. <br><br>
+    </p>
+
+    <!-- Image for Frog -->
+    <img src="https://i.pinimg.com/736x/28/d1/e1/28d1e11039734392a275a6ad1c44bd7e.jpg" alt="Frog Picture" onclick="addEmoji()" style="width: 400px">
+
+    <!-- Display frog faces -->
+    <br><br>
+    <span id="addFrogEmoji"></span>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Q4-JS1</title>
+    
+    <script>
+        // When user click on Lion Image
+        function showRoar() {
+            // Get the span id and display message
+            document.getElementById("animalMessage").innerHTML = "<span style='color: orange;'>Roar</span>"
+        }
+
+        // When user click on Frog Image
+        function showRibbit() {
+            // Get the span id and display message
+            document.getElementById("animalMessage").innerHTML = "<span style='color: green;'>Ribbit</span>"
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Question 4</h1>
+
+    <p>
+        On a web page, display an image of a lion and an image of a frog. <br><br>
+
+        When the user clicks on the lion image, a message "Roar" in orange color appears on the page. <br><br>
+
+        When the user clicks on the frog image, a message "Ribbit" in green color appears on the page. <br><br>
+    </p>
+
+    <!-- Image for Lion -->
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/94/Simba_%28_Disney_character_-_adult%29.png/165px-Simba_%28_Disney_character_-_adult%29.png" alt="Lion Picture" onclick="showRoar()" style="width: 400px">
+    
+    <!-- Image for Frog -->
+    <img src="https://i.pinimg.com/736x/28/d1/e1/28d1e11039734392a275a6ad1c44bd7e.jpg" alt="Frog Picture" onclick="showRibbit()" style="width: 400px">
+
+    <!-- Message field -->
+    <br><br>
+    <span id="animalMessage"></span>
+</body>
+</html>
