@@ -102,5 +102,17 @@
 ## Wrapping Up: Why This Rocks and Key Takeaways 🎉
 - This process loops to refine everything – skip it, and your network might flop like a bad code deploy!
 - **Benefits**: Objective designs, no biases, scalable networks.
-- **My Engineer Tip**: Treat it like debugging: Gather facts, measure, characterize bugs (behaviors), fix (develop), and map the flow. 
-- Keep smiling through the designs – networks are just big puzzles. 😄
+- **My Engineer Tip**: Treat it like debugging: 
+    Gather facts 
+        |
+        v
+    Measure 
+        |
+        v
+    Characterize bugs (behaviors)
+        |
+        v 
+    Fix (develop)
+        |
+        v
+    Map the flow. 
