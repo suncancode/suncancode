@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lecture 4 - Web Form Summary</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+        h1, h2 { color: #333; }
+        code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+        pre { background: #f4f4f4; padding: 10px; border-left: 5px solid #ccc; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Lecture 4 - Web Form</h1>
+    
+    <h2>Objectives</h2>
+    <ul>
+        <li>Design a web form.</li>
+        <li>Understand the web form HTML structure.</li>
+        <li>Use a web form to submit data to the server.</li>
+    </ul>
+
+    <h2>Introduction to Forms</h2>
+    <p>HTML forms are used to collect user input and contain various form elements like text fields, checkboxes, etc. When submitted, data is sent to the server for processing. Front-end elements must match back-end parameters.</p>
+
+    <h2>Example: Whosville’s Library Book Search</h2>
+    <p>Back-end at <code>http://library.whosville/bsearch</code> with parameters: author, year, sub (multiple values: mth, cs, bio, phy, chem).</p>
+    <p>Submitted URL example: <code>http://library.whosville/bsearch?author=tonien&year=2000&sub=cs&sub=phy</code>.</p>
+    <pre>
+&lt;form action="http://library.whosville/bsearch" method="get"&gt;
+    &lt;input type="checkbox" name="sub" value="mth"/&gt; Mathematics&lt;br&gt;
+    &lt;input type="checkbox" name="sub" value="cs"/&gt; Computer Science&lt;br&gt;
+    &lt;!-- other checkboxes --&gt;
+    &lt;input type="text" name="author"/&gt;&lt;br&gt;
+    &lt;input type="text" name="year"/&gt;&lt;br&gt;
+    &lt;input type="submit" value="Search"/&gt;
+&lt;/form&gt;
+    </pre>
+    <p>Note: Use <code>name</code> for parameter names, <code>value</code> for data sent to server. Displayed text can differ from sent value.</p>
+
+    <h2>Class Discussion</h2>
+    <p>View source code of forms on sites like eBay or Amazon to see <code>name</code> attributes and URL data after submission.</p>
+
+    <h2>Form Elements</h2>
+    <h3>Type Text</h3>
+    <pre>&lt;input type="text" name="firstname" size="30"/&gt;</pre>
+
+    <h3>Type Password</h3>
+    <pre>&lt;input type="password" name="password" size="30"/&gt;</pre>
+
+    <h3>Type Checkbox</h3>
+    <pre>&lt;input type="checkbox" name="journal" value="AMM"/&gt; American Mathematical Monthly</pre>
+    <p>Use <code>checked="checked"</code> for pre-selected.</p>
+
+    <h3>Type Radio</h3>
+    <pre>&lt;input type="radio" name="studentType" value="u"/&gt; Undergraduate</pre>
+    <p>Same <code>name</code> for group. Use <code>checked="checked"</code> for default.</p>
+
+    <h3>Select (Dropdown)</h3>
+    <pre>
+&lt;select name="day"&gt;
+    &lt;option value="mon"&gt;Monday&lt;/option&gt;
+    &lt;!-- options --&gt;
+&lt;/select&gt;
+    </pre>
+    <p>Use <code>selected="selected"</code> for default.</p>
+
+    <h3>Select Multiple</h3>
+    <pre>
+&lt;select name="day" multiple&gt;
+    &lt;option value="mon"&gt;Monday&lt;/option&gt;
+    &lt;!-- options --&gt;
+&lt;/select&gt;
+    </pre>
+
+    <h3>Textarea</h3>
+    <pre>&lt;textarea name="comment" rows="5" cols="30"&gt;&lt;/textarea&gt;</pre>
+
+    <h3>Submit and Reset</h3>
+    <pre>&lt;input type="submit" value="Login"/&gt;
+&lt;input type="reset" value="Reset form"/&gt;</pre>
+    <p>Reset clears all form inputs.</p>
+
+    <h2>Form Methods: GET vs POST</h2>
+    <table>
+        <tr><th>Aspect</th><th>GET</th><th>POST</th></tr>
+        <tr><td>Visibility</td><td>Data visible in URL</td><td>Data not displayed</td></tr>
+        <tr><td>History</td><td>Parameters in browser history</td><td>Not saved</td></tr>
+        <tr><td>Bookmarked</td><td>Can be bookmarked</td><td>Cannot</td></tr>
+        <tr><td>Security</td><td>Less secure (data in URL)</td><td>More secure</td></tr>
+        <tr><td>Back/Reload</td><td>Harmless</td><td>May resubmit (alert)</td></tr>
+        <tr><td>Data Length</td><td>Limited (2048 chars)</td><td>No limit</td></tr>
+        <tr><td>Data Type</td><td>ASCII only</td><td>Binary allowed</td></tr>
+    </table>
+    <p>Use POST for sensitive data like passwords.</p>
+</body>
+</html>
