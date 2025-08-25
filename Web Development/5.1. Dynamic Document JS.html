@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Dynamic Document with JavaScript</title>
+    <script>
+        function sayHi1() {
+            // Get the first name
+            var firstname1 = document.getElementById("firstname1").value;
+            // Get the last name
+            var lastname1 = document.getElementById("lastname1").value;
+            // Construct greeting message
+            var message = "Hi " + firstname1 + " " + lastname1 + "!";
+            // Display greeting message
+            document.getElementById("greeting1").innerHTML = message;
+        }
+        function sayHi2() {
+            // Get the first name
+            var firstname2 = document.getElementById("firstname2").value;
+            // Get the last name
+            var lastname2 = document.getElementById("lastname2").value;
+            // Construct greeting message
+            var message = "Hi " + firstname2 + " " + lastname2 + "!";
+            // Display greeting message
+            document.getElementById("greeting2").innerHTML = message;
+        }
+        function clearPage() {
+            // Clear first name text field
+            document.getElementById("firstname2").value = "";
+            // Clear last name text field
+            document.getElementById("lastname2").value = "";
+            // Clear greeting message
+            document.getElementById("greeting2").innerHTML = "";
+        }
+        function answer() {
+            // Get the 1st number
+            var inputField1 = document.getElementById("input1").value;
+            var num1 = Number(inputField1);
+            // Get 2nd number
+            var inputField2 = document.getElementById("input2").value;
+            var num2 = Number(inputField2);
+            // Get the operation
+            var op = document.getElementById("operationSelect").value;
+            // Calculate result
+            var result;
+            if(op == "add") {
+                result = num1 + num2;
+            } else if(op == "subtract") {
+                result = num1 - num2;
+            } else if(op == "multiply") {
+                result = num1 * num2;
+            } else if(op == "divide") {
+                result = num1 / num2;
+            }
+            // Display the result
+            document.getElementById("result").value = result;
+        }
+        function showAnimal(message, imageFile) {
+            document.getElementById("animalMessage").innerHTML = message;
+            var img = document.getElementById("animalImage");
+            img.src = imageFile;
+            img.style.display = "block";
+        }
+        function generateRandom() {
+            var num = Math.floor(Math.random() * 10) + 1;
+            document.getElementById("random").innerHTML = num;
+        }
+        var counter = 0;
+        var counterSchedule;
+        function startCounterAnimation() {
+            counterSchedule = setInterval(showCounter, 1000);
+        }
+        function showCounter() {
+            counter++;
+            document.getElementById("counter").innerHTML = counter;
+        }
+        function stopCounterAnimation() {
+            clearInterval(counterSchedule);
+        }
+        var rollDiceCounter = 0;
+        var rollDiceSchedule;
+        function rollDiceAnimation() {
+            rollDiceCounter = 0;
+            rollDiceSchedule = setInterval(rollDice, 100);
+        }
+        function rollDice() {
+            var diceValue = Math.floor(Math.random() * 6) + 1;
+            var imageFile = "dice" + diceValue + ".png";
+            document.getElementById("dice").src = imageFile;
+            rollDiceCounter++;
+            if (rollDiceCounter == 10) {
+                clearInterval(rollDiceSchedule);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Lecture 5A - Dynamic Document with JavaScript</h1>
+
+    <h2>Change content with JavaScript</h2>
+    <p>Step:</p>
+    <ol>
+        <li>Assign ID to HTML element.</li>
+        <li>Get element: <code>document.getElementById("id")</code>.</li>
+        <li>Change: <code>innerHTML</code> for <code>span/div value</code> for input, <code>src</code> for img.</li>
+    </ol>
+
+    <h2>Useful Tags for Dynamic Content</h2>
+    <p><code>&lt;div&gt;</code>: Block container.</p>
+    <p><code>&lt;span&gt;</code>: Inline container.</p>
+
+    <h2>Example 1: Say Hi!</h2>
+    <p><code>HTML</code> code:</p>
+    <pre>
+        Firstname: &lt;input type="text" id="firstname1" /&gt; &lt;br&gt;
+        Lastname: &lt;input type="text" id="lastname1" /&gt; &lt;br&gt;
+        &lt;button onclick="sayHi1()" &gt;Say Hi&lt;/button&gt; &lt;br&gt;
+        &lt;span id="greeting"&gt;&lt;/span&gt;
+    </pre>
+    <p>Function <code>sayHi1()</code> code:</p>
+    <pre>
+        function sayHi1() {
+        var firstname1 = document.getElementById("firstname1").value;
+        var lastname1 = document.getElementById("lastname1").value;
+        var message = "Hi " + firstname1 + " " + lastname1 + "!";
+        document.getElementById("greeting").innerHTML = message;
+        }
+    </pre>
+
+    <p>Demo:</p>
+        Firstname: <input type="text" id="firstname1"> <br>
+        Lastname: <input type="text" id="lastname1"> <br><br>
+        <button onclick="sayHi1()">Say Hi</button>
+        <span id="greeting1"></span>
+
+    <h2>Example 2: Say Hi! with Clear</h2>
+    <p><code>HTML</code> code:</p>
+    <pre>
+        &lt;button onclick="sayHi2()"&gt;Say Hi&lt;/button&gt;
+        &lt;button onclick="clearPage()"&gt;Clear&lt;/button&gt;
+    </pre>
+    <p>Function <code>sayHi2()</code> code:</p>
+    <pre>
+        function clearPage() {
+        document.getElementById("firstname2").value = "";
+        document.getElementById("lastname2").value = "";
+        document.getElementById("greeting2").innerHTML = "";
+        }
+    </pre>
+
+    <p>Demo:</p>
+        Firstname: <input type="text" id="firstname2"> <br>
+        Lastname: <input type="text" id="lastname2"> <br><br>
+        <button onclick="sayHi2()">Say Hi</button>
+        <button onclick="clearPage()">Clear</button>
+        <span id="greeting2"></span>
+
+    <h2>Example 3: Math Question</h2>
+    <p>Enter 2 numbers, select operation, click "=" for result.</p>
+    <p><code>HTML</code> code:</p>
+    <pre>
+        &lt;input type="text" id="input1" /&gt;
+        &lt;select id="operationSelect"&gt;
+            &lt;option value="add"&gt;+&lt;/option&gt;
+            &lt;option value="subtract"&gt;-&lt;/option&gt;
+            &lt;option value="multiply"&gt;x&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;input type="text" id="input2" /&gt;
+        &lt;button onclick="answer()"&gt;=&lt;/button&gt;
+        &lt;input type="text" id="result" /&gt;
+    </pre>
+
+    <p>Function <code>answer()</code> code:</p>
+    <pre>
+        function answer() {
+            // Get the 1st number
+            var inputField1 = document.getElementById("input1").value;
+            var num1 = Number(inputField1);
+            // Get 2nd number
+            var inputField2 = document.getElementById("input2").value;
+            var num2 = Number(inputField2);
+            // Get the operation
+            var operation = document.getElementById("operationSelect").value;
+            // Calculate result
+            var result;
+            if(operation == "add") {
+                result = num1 + num2;
+            } else if(operation == "subtract") {
+                result = num1 - num2;
+            } else if(operation == "multiply") {
+                result = num1 * num2;
+            } else if(operation == "divide") {
+                result = num1 / num2;
+            }
+            // Display the result
+            document.getElementById("result").value = result;
+        }
+    </pre>
+
+    <p>Demo:</p>
+    <input type="text" id="input1">
+    <select id="operationSelect">
+        <option value="add">+</option>
+        <option value="subtract">-</option>
+        <option value="multiply">x</option>
+        <option value="divide">:</option>
+    </select>
+    <input type="text" id="input2">
+    <button onClick="answer()">=</button>
+    <input type="text" id="result">
+
+    <h2>Example 4: Cat & Dog</h2>
+    <p>Click "Cat" or "Dog" to show corresponding image and message.</p>
+    <p>HTML code:</p>
+    <pre>
+        &lt;button onclick="showAnimal('Meao meao meao!', 'cat.jpg')"&gt;Cat&lt;/button&gt;
+        &lt;button onclick="showAnimal('Woof woof woof!', 'dog.jpg')"&gt;Dog&lt;/button&gt;
+        &lt;br&gt; &lt;br&gt;
+        &lt;span id="animalMessage"&gt;&lt;/span&gt; &lt;br&gt;
+        &lt;img id="animalImage" src="" alt="Animal" style="max-width: 300px; display: none;"&gt;
+    </pre>
+    <p>Function showAnimal(message, imageFile) code:</p>
+    <pre>
+        function showAnimal(message, imageFile) {
+            document.getElementById("animalMessage").innerHTML = message;
+            var img = document.getElementById("animalImage");
+            img.src = imageFile;
+            img.style.display = "block";
+        }
+    </pre>
+    <p>Demo:</p>
+    <p>
+        <button onclick="showAnimal('Meao meao meao!', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg')">Cat</button>
+        <button onclick="showAnimal('Woof woof woof!', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Dog_%28Canis_lupus_familiaris%29.jpg/1200px-Dog_%28Canis_lupus_familiaris%29.jpg')">Dog</button>
+        <br><br>
+        <span id="animalMessage"></span> <br>
+        <img id="animalImage" src="" alt="Animal" style="max-width: 300px; display: none;">
+    </p>
+
+    <h2>Example 4: Cat & Dog</h2>
+    <h3>HTML code:</h3>
+    <pre>
+        <button onclick="showMessage('Meao meao meao!')">Cat</button>
+        <button onclick="showMessage('Woof woof woof!')">Dog</button>
+        <br><br>
+        <span id="display"></span>
+    </pre>
+    <h3>Function showMessage() code:</h3>
+    <pre>
+        function showMessage(message) {
+            document.getElementById("display").innerHTML = message;
+        }
+    </pre>
+    <h3>Demo:</h3>
+    <p>
+        <button onclick="showMessage('Meao meao meao!')">Cat</button>
+        <button onclick="showMessage('Woof woof woof!')">Dog</button>
+        <br><br>
+        <span id="display"></span>
+    </p>
+
+    <h2>Example 5: Random Number</h2>
+    <h3>HTML code:</h3>
+    <pre>
+        <button onclick="generateRandom()">Generate</button>
+        <span id="random"></span>
+    </pre>
+    <h3>Function generateRandom() code:</h3>
+    <pre>
+        function generateRandom() {
+            var num = Math.floor(Math.random() * 10) + 1;
+            document.getElementById("random").innerHTML = num;
+        }
+    </pre>
+    <h3>Demo:</h3>
+    <p>
+        <button onclick="generateRandom()">Generate</button>
+        <span id="random"></span>
+    </p>
+
+    <h2>Example 6: Counter Animation</h2>
+    <h3>HTML code:</h3>
+    <pre>
+        <button onclick="startCounterAnimation()">Start counter</button>
+        <button onclick="stopCounterAnimation()">Stop counter</button>
+        <br><br>
+        <span id="counter"></span>
+    </pre>
+    <h3>Function code:</h3>
+    <pre>
+        var counter = 0;
+        var counterSchedule;
+        function startCounterAnimation() {
+            counterSchedule = setInterval(showCounter, 1000);
+        }
+        function showCounter() {
+            counter++;
+            document.getElementById("counter").innerHTML = counter;
+        }
+        function stopCounterAnimation() {
+            clearInterval(counterSchedule);
+        }
+    </pre>
+    <h3>Demo:</h3>
+    <p>
+        <button onclick="startCounterAnimation()">Start counter</button>
+        <button onclick="stopCounterAnimation()">Stop counter</button>
+        <br><br>
+        <span id="counter"></span>
+    </p>
+
+    <h2>Example 7: Dice Animation</h2>
+    <h3>HTML code:</h3>
+    <pre>
+        <button onclick="rollDiceAnimation()">Roll the dice</button>
+        <br><br>
+        <img id="dice" />
+    </pre>
+    <h3>Function rollDiceAnimation() code:</h3>
+    <pre>
+        var rollDiceCounter = 0;
+        var rollDiceSchedule;
+        function rollDiceAnimation() {
+            rollDiceCounter = 0;
+            rollDiceSchedule = setInterval(rollDice, 100);
+        }
+        function rollDice() {
+            var diceValue = Math.floor(Math.random() * 6) + 1;
+            var imageFile = "dice" + diceValue + ".png";
+            document.getElementById("dice").src = imageFile;
+            rollDiceCounter++;
+            if (rollDiceCounter == 10) {
+                clearInterval(rollDiceSchedule);
+            }
+        }
+    </pre>
+    <h3>Demo:</h3>
+    <p>
+        <button onclick="rollDiceAnimation()">Roll the dice</button>
+        <br><br>
+        <img id="dice" />
+    </p>
+</body>
+</html>

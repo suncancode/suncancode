@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS2_Q1</title>
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <h1>Whosville library book search</h1>
+    <form action="http://library.whosville/bsearch" method="GET">
+        <table>
+            <tr>
+                <td><label for="author">Author name:</label></td>
+                <td><input type="text" name="author"></td>
+            </tr>
+            <tr>
+                <td><label for="year">Publication year:</label></td>
+                <td><input type="text" name="year"></td>
+            </tr>
+            <tr>
+                <td>Subject:</td>
+                <td>
+                    <input type="checkbox" name="sub" value="mth">
+                    <label for="mth">Mathematics</label> <br>
+                    <input type="checkbox" name="sub" value="cs">
+                    <label for="cs">Computer Science</label> <br>
+                    <input type="checkbox" name="sub" value="bio">
+                    <label for="bio">Biology</label> <br>
+                    <input type="checkbox" name="sub" value="phy">
+                    <label for="phy">Physics</label> <br>
+                    <input type="checkbox" name="sub" value="chem">
+                    <label for="chem">Chemistry</label> <br>
+                    <button type="submit" value="Search">Submit</button>
+                    <button type="reset" value="Clear">Clear</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
