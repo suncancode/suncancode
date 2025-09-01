@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Student Info</title>
+    
+    <style>
+        .student-number {
+            color: orange;
+        }
+        .student-name {
+            color: yellow;
+        }
+        .emoji {
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="infoContainer">
+        <span class="student-number" id="studentNumber">1008389</span>
+        <span class="student-name" id="studentName">Trung Duc Le</span>
+    </div>
+    <p class="emoji" id="smileyEmoji">&#128526;</p>
+
+    <script>
+        // function to handle mouseover toggling
+        const studentNumber = document.getElementById("studentNumber");
+        const studentName = document.getElementById("studentName");
+        const infoContainer = document.getElementById("infoContainer");
+        const smileyEmoji = document.getElementById("smileyEmoji");
+
+        let toggleCount = 0; // track the number of mouseovers
+
+        smileyEmoji.addEventListener("mouseover", function() {
+            toggleCount++;
+
+            if (toggleCount % 2 === 1) {
+                // Odd mouseover: move student name before student number
+                infoContainer.innerHTML = "";
+                infoContainer.appendChild(studentName);
+                infoContainer.appendChild(studentNumber);
+            } else {
+                // Even mouseover: move student number before student name
+                infoContainer.innerHTML = ""; 
+                infoContainer.appendChild(studentNumber);
+                infoContainer.appendChild(studentName);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lecture 5B - JavaScript Animation Examples</title>
+    <script>
+        // Phần var vs let (ví dụ minh họa)
+        function varVsLetExample() {
+            if (true) {
+                var varVar = "I'm function-scoped";
+                let letVar = "I'm block-scoped";
+            }
+            console.log(varVar); // Hoisting cho phép, in ra giá trị
+            // console.log(letVar); // Lỗi: letVar không tồn tại ngoài khối
+        }
+        varVsLetExample(); // Chạy ví dụ trong console
+
+        // Phần template literals
+        var subject = "CSIT884";
+        var message = `This is ${subject} subject.`;
+        console.log(message); // In ra console
+
+        // Ví dụ Digital Clock
+        var clockAnimation;
+        function startClockAnimation() {
+            if (clockAnimation) clearInterval(clockAnimation); // Tránh chồng animation
+            clockAnimation = setInterval(showClock, 1000);
+        }
+        function showClock() {
+            var now = new Date();
+            var clock = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+            document.getElementById("clock").innerHTML = clock;
+        }
+        function stopClockAnimation() {
+            clearInterval(clockAnimation);
+        }
+
+        // Ví dụ Slideshow
+        var slideshowAnimation;
+        var IMAGE_LIST = [
+            // "https://via.placeholder.com/500?text=Cat",  // Thay bằng ảnh thực nếu có
+            // "https://via.placeholder.com/500?text=Dog",
+            // "https://via.placeholder.com/500?text=Heart",
+            // "https://via.placeholder.com/500?text=Help",
+            // "https://via.placeholder.com/500?text=Home"
+        ];
+        function startAnimation() {
+            if (slideshowAnimation) clearInterval(slideshowAnimation); // Tránh chồng
+            slideshowAnimation = setInterval(showImage, 1000);
+        }
+        function showImage() {
+            var index = Math.floor(Math.random() * IMAGE_LIST.length);
+            document.getElementById("imageHolder").src = IMAGE_LIST[index];
+        }
+        function stopAnimation() {
+            clearInterval(slideshowAnimation);
+        }
+    </script>
+</head>
+<body>
+    <h1>Lecture 5B - JavaScript Animation</h1>
+
+    <h2>1. var vs let</h2>
+    <p>var: Function-scoped, hoisting. let: Block-scoped, không hoisting.</p>
+    <pre><code>
+function varVsLetExample() {
+    if (true) {
+        var varVar = "I'm function-scoped";
+        let letVar = "I'm block-scoped";
+    }
+    console.log(varVar); // OK
+    // console.log(letVar); // Lỗi
+}
+    </code></pre>
+    <p>Mở console để xem (F12).</p>
+
+    <h2>2. Template Literals</h2>
+    <p>Chuỗi động với backticks và ${}.</p>
+    <pre><code>
+var subject = "CSIT884";
+var message = `This is ${subject} subject.`;
+console.log(message); // "This is CSIT884 subject."
+    </code></pre>
+    <p>Mở console để xem.</p>
+
+    <h2>3. Digital Clock Animation</h2>
+    <button onclick="startClockAnimation()">Start Clock</button>
+    <button onclick="stopClockAnimation()">Stop Clock</button>
+    <br><br>
+    <span id="clock"></span>
+    <pre><code>
+// Code như trên trong &lt;script&gt;
+    </code></pre>
+
+    <h2>4. Slideshow Animation</h2>
+    <button onclick="startAnimation()">Start Slideshow</button>
+    <button onclick="stopAnimation()">Stop Slideshow</button>
+    <br><br>
+    <img id="imageHolder" height="500px" />
+    <pre><code>
+// Code như trên trong &lt;script&gt;
+    </code></pre>
+
+    <h2>References</h2>
+    <p>Flanagan D. JavaScript the Definitive Guide, 7th ed., etc.</p>
+</body>
+</html>
