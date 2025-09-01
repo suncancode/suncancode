@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 6A - XML and DTD Summary</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1, h2 { color: #2c3e50; }
+        pre { background: #f4f4f4; padding: 10px; border: 1px solid #ddd; }
+        table { border-collapse: collapse; width: 80%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #3498db; color: white; }
+    </style>
+</head>
+<body>
+    <h1>CSIT884 - Web Development: XML and DTD</h1>
+
+    <h2>Objectives</h2>
+    <ul>
+        <li>Use XML to store and transport data over the Internet.</li>
+        <li>Learn DTD language to define the structure of an XML document.</li>
+    </ul>
+
+    <h2>Introduction to XML</h2>
+    <p>XML (EXtensible Markup Language) is a markup language similar to HTML, used for storing and transporting data. It is software- and hardware-independent, separates data from presentation, and uses the .xml file extension.</p>
+    <p><strong>Difference from HTML:</strong> HTML has predefined tags, while XML allows user-defined tags. Standards are defined using DTD or XSD.</p>
+    <p><strong>Comparison with JSON:</strong> JSON is another popular data interchange format. Example:</p>
+    <pre>
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "email": "jsmith@gmail.com",
+  "mobile": "0211223344"
+}
+    </pre>
+    <p>In web apps, XML/JSON store/transport data, while HTML/XSLT transform/display it.</p>
+
+    <h2>XML Structure and Rules</h2>
+    <h3>XML Declaration</h3>
+    <p>Optional but recommended, must be the first line (no blank lines before). Syntax:</p>
+    <pre>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes" ?&gt;</pre>
+    <p>Example:</p>
+    <pre>&lt;?xml version="1.0" ?&gt;
+&lt;student&gt;
+  &lt;firstName&gt;John&lt;/firstName&gt;
+  &lt;lastName&gt;Smith&lt;/lastName&gt;
+  &lt;email&gt;jsmith@gmail.com&lt;/email&gt;
+  &lt;mobile&gt;0211223344&lt;/mobile&gt;
+&lt;/student&gt;</pre>
+
+    <h3>Root Element</h3>
+    <p>Every XML document must have one root element as the parent of all others.</p>
+    <p><strong>Not Well-Formed (No Root):</strong></p>
+    <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;student&gt;...&lt;/student&gt;
+&lt;student&gt;...&lt;/student&gt;</pre>
+    <p><strong>Well-Formed (With Root):</strong></p>
+    <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;studentList&gt;
+  &lt;student&gt;...&lt;/student&gt;
+  &lt;student&gt;...&lt;/student&gt;
+&lt;/studentList&gt;</pre>
+
+    <h3>Elements and Attributes</h3>
+    <p>An element includes start and end tags, can have attributes. Example:</p>
+    <pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;dailyTransaction date="24/02/2015"&gt;
+  &lt;person staffDbId="103" operation="update"&gt;
+    &lt;firstName&gt;John&lt;/firstName&gt;
+    &lt;lastName&gt;Smith&lt;/lastName&gt;
+    &lt;mobile&gt;0211223344&lt;/mobile&gt;
+  &lt;/person&gt;
+&lt;/dailyTransaction&gt;</pre>
+    <p>Attributes must be quoted (single or double quotes).</p>
+    <p><strong>Case Sensitivity:</strong> &lt;student&gt; differs from &lt;STUDENT&gt;.</p>
+
+    <h3>Attribute vs Child Element</h3>
+    <p>Metadata (e.g., gender) as attributes, data as elements. Example:</p>
+    <pre>&lt;person gender="M"&gt;
+  &lt;firstName&gt;John&lt;/firstName&gt;
+  &lt;lastName&gt;Smith&lt;/lastName&gt;
+&lt;/person&gt;</pre>
+    <p>Better as:</p>
+    <pre>&lt;person&gt;
+  &lt;firstName&gt;John&lt;/firstName&gt;
+  &lt;lastName&gt;Smith&lt;/lastName&gt;
+  &lt;gender&gt;M&lt;/gender&gt;
+&lt;/person&gt;</pre>
+
+    <h3>Empty Elements and Nesting</h3>
+    <p>Empty elements use self-closing tags: &lt;emptyElement /&gt;. All elements must be properly nested.</p>
+
+    <h3>Entity References</h3>
+    <p>Use to replace special characters:</p>
+    <table>
+        <tr><th>Character</th><th>Entity</th><th>Meaning</th></tr>
+        <tr><td>&lt;</td><td>&amp;lt;</td><td>Less than</td></tr>
+        <tr><td>&gt;</td><td>&amp;gt;</td><td>Greater than</td></tr>
+        <tr><td>&amp;</td><td>&amp;amp;</td><td>Ampersand</td></tr>
+        <tr><td>'</td><td>&amp;apos;</td><td>Apostrophe</td></tr>
+        <tr><td>"</td><td>&amp;quot;</td><td>Quotation mark</td></tr>
+    </table>
+
+    <h3>Comments</h3>
+    <p>Use: &lt;!-- this is a comment --&gt;</p>
+
+    <h2>Introduction to DTD</h2>
+    <p>DTD defines the legal structure of an XML document, can be internal or external.</p>
+    <h3>Internal DTD Example</h3>
+    <pre>&lt;?xml version="1.0" standalone="yes" ?&gt;
+&lt;!DOCTYPE student [
+  &lt;!ELEMENT student (firstName,lastName,email,mobile)&gt;
+  &lt;!ELEMENT firstName (#PCDATA)&gt;
+  &lt;!ELEMENT lastName (#PCDATA)&gt;
+  &lt;!ELEMENT email (#PCDATA)&gt;
+  &lt;!ELEMENT mobile (#PCDATA)&gt;
+]&gt;
+&lt;student&gt;
+  &lt;firstName&gt;John&lt;/firstName&gt;
+  &lt;lastName&gt;Smith&lt;/lastName&gt;
+  &lt;email&gt;jsmith@gmail.com&lt;/email&gt;
+  &lt;mobile&gt;0211223344&lt;/mobile&gt;
+&lt;/student&gt;</pre>
+</body>
+</html>

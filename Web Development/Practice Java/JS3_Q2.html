@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Javascript 3 - Question 2</title>
+        <script>
+            function calculate() {
+                // Get the 2 number value and the result
+                var number1 = Number(document.getElementById("num1").value);
+                var number2 = Number(document.getElementById("num2").value);
+                var userResult = Number(document.getElementById("uresult").value);
+
+                // Get the operation
+                var operation = document.getElementById("op").value;
+
+                // Initialize and calculate result variable
+                var result;
+
+                if (operation == "add") {
+                    result = number1 + number2;
+                } else if (operation == "sub") {
+                    result = number1 - number2;
+                } else if (operation == "mul") {
+                    result = number1 * number2;
+                } else if (operation == "div") {
+                    result = number1 / number2;
+                }
+
+                // Display the result and message to check
+                if (result == userResult){
+                    document.getElementById("resultDisplay").innerHTML = "Correct!";
+                } else {
+                    document.getElementById("resultDisplay").innerHTML = "Incorrect, please try again.";
+                }
+            }
+        </script>
+</head>
+
+<body>
+    <input type="text" size="5" id="num1">
+
+    <select id="op">
+        <option value="add">+</option>
+        <option value="sub">-</option>
+        <option value="mul">x</option>
+        <option value="div">/</option>
+    </select>
+
+    <input type="text" size="5" id="num2">
+
+    =
+
+    <input type="text" size="5" id="uresult">
+    
+    <button onclick="calculate();">Check</button>
+
+    <span id="resultDisplay"></span>
+
+</body>
+</html>

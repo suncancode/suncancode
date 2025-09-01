@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Javascript 3 - Question 4</title>
+        <script>
+            // Declare counter variable
+            var counter = 0;
+            var counterAnimation;
+            var flagAnimation = false;
+            
+            function updateCounter() {
+                // Update counter
+                counter++;
+
+                // Display counter
+                document.getElementById("counterDisplay").innerHTML = counter;
+            }
+
+            function startCounterAnimation() {
+                if (!flagAnimation) {
+                    // Set flag to true
+                    flagAnimation = true;
+
+                    // Set interval for update counter function
+                    counterAnimation = setInterval(updateCounter, 1000);
+                } 
+            }
+
+            function stopCounterAnimation() {
+                if (flagAnimation) {
+                    // Set flag to false
+                    flagAnimation = false;
+
+                    // Clear interval
+                    clearInterval(counterAnimation);
+                }
+            }
+        </script>
+</head>
+
+<body>
+    
+    <button onclick="startCounterAnimation();">Start Counter Animation</button>
+    <button onclick="stopCounterAnimation();">Stop Counter Animation</button> <br><br>
+
+    <span id="counterDisplay">0</span>
+
+</body>
+</html>

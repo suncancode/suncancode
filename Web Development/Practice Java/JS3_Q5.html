@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Javascript 3 - Question 5</title>
+        <script>
+            // Declare variable for animation
+            var slideShowAnimation;
+            var flagAnimation = false;
+            var index = 0;
+
+            // Declare list of slideshow images
+            var IMAGE_LIST = [
+                "images/square.png",
+                "images/rectangle.png",
+                "images/kite.png",
+                "images/parallelogram.png",
+                "images/trapezium.png",
+                "images/rhombus.png"
+            ]
+
+            function showImage() {
+                // Display image
+                document.getElementById("imageHolder").src = IMAGE_LIST[index]
+                
+                index++;
+
+                if (index == IMAGE_LIST.length) {
+                    index = 0;
+                }
+            }
+
+            function startAnimation() {
+                if (!flagAnimation) {
+                    // Set flag to true
+                    flagAnimation = true;
+
+                    // Start the slide show animation
+                    slideShowAnimation = setInterval(showImage, 1000)
+                }
+            }
+
+            function stopAnimation() {
+                if (flagAnimation) {
+                    // Reset variables
+                    flagAnimation = false;
+                    index = 0;
+
+                    // Stop the slide show animation
+                    clearInterval(slideShowAnimation)
+                }
+            }
+
+        </script>
+</head>
+
+<body>
+    
+    <button onclick="startAnimation();">
+        Start Slideshow
+    </button>
+    <button onclick="stopAnimation();">
+        Stop Slideshow
+    </button> <br><br>
+
+    <img src="" alt="Slide show image" id="imageHolder" width="300px">
+
+</body>
+</html>
