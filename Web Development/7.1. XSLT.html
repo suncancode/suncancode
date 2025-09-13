@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSLT Overview and Interaction with XML</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+        pre {
+            background: #ecf0f1;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+        }
+        code {
+            background: #dfe6e9;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .example {
+            background: #f9e79f;
+            padding: 1rem;
+            border-left: 4px solid #f1c40f;
+            margin: 1rem 0;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #2c3e50;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="section">
+            <h2>1. What is XSLT?</h2>
+            <p>
+                <strong>XSLT (Extensible Stylesheet Language Transformations)</strong> is a language based on XML, designed to transform XML documents into other formats, such as HTML, plain text, or even another XML structure. It plays a crucial role in web development by enabling dynamic presentation of data stored in XML files. XSLT files typically use the <code>.xsl</code> extension and are processed by an XSLT processor to generate the desired output.
+            </p>
+            <p>
+                Key features of XSLT include:
+                <ul>
+                    <li>Flexible transformation of XML data into various formats.</li>
+                    <li>Support for conditional logic and looping to manipulate data.</li>
+                    <li>Integration with XPath for navigating and selecting XML elements.</li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>2. Basic Structure of an XSLT File</h2>
+            <p>
+                An XSLT stylesheet begins with an XML declaration followed by the <code>&lt;xsl:stylesheet&gt;</code> element. This element defines the transformation rules and includes essential attributes:
+            </p>
+            <pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsl:stylesheet version="1.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns="http://www.w3.org/1999/xhtml"&gt;
+    &lt;!-- Transformation rules go here --&gt;
+&lt;/xsl:stylesheet&gt;
+            </pre>
+            <p>
+                - <code>version="1.0"</code>: Specifies the XSLT version.
+                - <code>xmlns:xsl</code>: Declares the XSLT namespace.
+                - <code>xmlns</code>: Ensures the output conforms to XHTML standards.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>3. How XSLT Interacts with XML</h2>
+            <p>
+                XSLT interacts with XML by applying transformation rules to convert the hierarchical structure of an XML document into a different format. This process involves:
+            </p>
+            <ol>
+                <li><strong>Input XML Document</strong>: The source XML file contains the raw data (e.g., exam timetable).</li>
+                <li><strong>XSLT Stylesheet</strong>: Defines how to map XML elements to the target format (e.g., HTML).</li>
+                <li><strong>XSLT Processor</strong>: A tool (e.g., browser or server-side engine) that executes the transformation.</li>
+                <li><strong>Output</strong>: The resulting file (e.g., HTML) ready for display.</li>
+            </ol>
+
+            <div class="example">
+                <h3>Example: Transforming an Exam Timetable</h3>
+                <p><strong>XML Input:</strong></p>
+                <pre>
+&lt;exam subject="MATH 2113"&gt;
+    &lt;title&gt;Abstract Algebra&lt;/title&gt;
+    &lt;venue&gt;20.G01&lt;/venue&gt;
+    &lt;date&gt;15/11/2018&lt;/date&gt;
+    &lt;time&gt;1PM-4PM&lt;/time&gt;
+    &lt;note&gt;Closed book exam, calculator allowed&lt;/note&gt;
+&lt;/exam&gt;
+                </pre>
+                <p><strong>XSLT Stylesheet:</strong></p>
+                <pre>
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml"&gt;
+    &lt;xsl:template match="/"&gt;
+        &lt;html&gt;
+            &lt;body&gt;
+                &lt;h2&gt;Exam Information&lt;/h2&gt;
+                &lt;p&gt;Subject: &lt;xsl:value-of select="/exam/@subject"/&gt;&lt;/p&gt;
+                &lt;p&gt;Title: &lt;xsl:value-of select="/exam/title"/&gt;&lt;/p&gt;
+                &lt;p&gt;Venue: &lt;xsl:value-of select="/exam/venue"/&gt;&lt;/p&gt;
+                &lt;p&gt;Date: &lt;xsl:value-of select="/exam/date"/&gt;&lt;/p&gt;
+                &lt;p&gt;Time: &lt;xsl:value-of select="/exam/time"/&gt;&lt;/p&gt;
+                &lt;p&gt;Note: &lt;xsl:value-of select="/exam/note"/&gt;&lt;/p&gt;
+            &lt;/body&gt;
+        &lt;/html&gt;
+    &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+                </pre>
+                <p><strong>HTML Output:</strong></p>
+                <pre>
+&lt;html&gt;
+    &lt;body&gt;
+        &lt;h2&gt;Exam Information&lt;/h2&gt;
+        &lt;p&gt;Subject: MATH 2113&lt;/p&gt;
+        &lt;p&gt;Title: Abstract Algebra&lt;/p&gt;
+        &lt;p&gt;Venue: 20.G01&lt;/p&gt;
+        &lt;p&gt;Date: 15/11/2018&lt;/p&gt;
+        &lt;p&gt;Time: 1PM-4PM&lt;/p&gt;
+        &lt;p&gt;Note: Closed book exam, calculator allowed&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                </pre>
+            </div>
+            <p>
+                In this example, the <code>&lt;xsl:template&gt;</code> element matches the root of the XML document, and <code>&lt;xsl:value-of&gt;</code> extracts the values of XML elements and attributes to build the HTML output.
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

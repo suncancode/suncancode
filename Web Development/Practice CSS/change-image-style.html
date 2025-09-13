@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Image Style</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+            text-align: center;
+            padding: 2rem;
+        }
+        .image-box {
+            width: 200px;
+            height: auto;
+            transition: all 0.5s ease;
+            margin: 1rem auto;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+    </style>
+    <script>
+        function changeOpacity() {
+            // Get the opacity value
+            var opacityValue = Number(document.getElementById("opacity").value);
+
+            // Apply the Image opcaity 
+            var image = document.getElementById("cat");
+            image.style.opacity = opacityValue;
+        }
+    </script>
+</head>
+<body>
+    <div class="section">
+        <h1>Change Image Style</h1>
+        Enter image opcity value (from 0 to 1): 
+        <input type="text" id="opacity"> <br>
+        <img id="cat" src="https://t4.ftcdn.net/jpg/00/97/58/97/360_F_97589769_t45CqXyzjz0KXwoBZT9PRaWGHRk5hQqQ.jpg" width="550" height="400" alt="cat image"> <br>
+        <button onclick="changeOpacity()">Change Opacity</button>
+    </div>
+</body>
+</html>

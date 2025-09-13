@@ -1,0 +1,15 @@
+<?xml-stylesheet type="text/xsl" href="students.xsl"?>
+<students>
+    <student>
+        <id>123456</id>
+        <name>Name1</name>
+        <course>Web Development</course>
+        <grade>D</grade>
+    </student>
+    <student>
+        <id>123457</id>
+        <name>Name2</name>
+        <course>Web Development</course>
+        <grade>HD</grade>
+    </student>
+</students>

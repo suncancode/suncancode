@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Paragraph Style</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+            text-align: center;
+            padding: 2rem;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+    </style>
+    <script>
+        function changeParaStyle() {
+            // Get user input from text fields
+            var fontSize = document.getElementById("sizeInput").value;
+            var padding = document.getElementById("paddingInput").value;
+            var color = document.getElementById("textColorInput").value;
+            var bgColor = document.getElementById("bgColorInput").value;
+            var border = document.getElementById("borderInput").value;
+
+            // Set style
+            var para = document.getElementById("gong")
+            para.style.fontSize = fontSize;
+            para.style.padding = padding;
+            para.style.color = color;
+            para.style.backgroundColor = bgColor;
+            para.style.border = border;
+        }
+    </script>
+</head>
+<body>
+    <h1>Change Paragraph Style</h1>
+    <p id="gong">Wollongong</p> <br>
+    Enter font size: 
+    <input text="text" id="sizeInput"> <br>
+    Enter padding:
+    <input text="text" id="paddingInput"> <br>
+    Enter text color: 
+    <input text="text" id="textColorInput"> <br>
+    Enter background color:
+    <input text="text" id="bgColorInput"> <br>
+    Enter border style:
+    <input text="text" id="borderInput"> <br>
+    <button onclick="changeParaStyle()">Change Style</button> <br>
+</body>
+</html>

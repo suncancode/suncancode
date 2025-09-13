@@ -1,0 +1,44 @@
+<!DOCTYPE>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Text Style</title>
+    <style>
+        .section {
+            background: rgb(212, 119, 119);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <script>
+        function changeTextStyle() {
+            // Get user input from text fields
+            var colorValue = document.getElementById("colorInput").value;
+            var fontSizeValue = document.getElementById("fontSizeInput").value;
+            var fontStyleValue = document.getElementById("fontStyleInput").value;
+
+            // Get Hello World span
+            var helloSpan = document.getElementById("hello");
+
+            // Apply changes
+            helloSpan.style.color = colorValue;
+            helloSpan.style.fontSize = fontSizeValue;
+            helloSpan.style.fontStyle = fontStyleValue;
+        }
+    </script>
+</head>
+<body>
+    <div class="section">
+        <h1>Change Text Style</h1>
+        Enter color: <input text="text" id="colorInput"> <br>
+        Enter font size: <input text="text" id="fontSizeInput"> <br>
+        Enter font style: <input text="text" id="fontStyleInput"> <br>
+        <button onclick="changeTextStyle()">Change Style</button> <br>
+        <span id="hello">Hello World</span>
+    </div>
+
+</body>
+</html>

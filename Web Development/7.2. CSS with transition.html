@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 7B - CSS Transitions and Transforms</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2980b9;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            color: #2980b9;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+        pre {
+            background: #ecf0f1;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+        }
+        code {
+            background: #dfe6e9;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .demo {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+        }
+        .demo-box {
+            width: 100px;
+            height: 100px;
+            background-color: #e74c3c;
+            transition: all 0.5s ease;
+            margin: 1rem auto;
+            text-align: center;
+            line-height: 100px;
+            color: white;
+            cursor: pointer;
+        }
+        .demo-box:hover {
+            transform: rotate(45deg) scale(1.2);
+            background-color: #2ecc71;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #2980b9;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="section">
+            <h2>1. Introduction and Objectives</h2>
+            <p>
+                This lecture focuses on integrating JavaScript with CSS to create interactive and animated effects on web pages. The key objectives are:
+                <ul>
+                    <li>Use JavaScript to manipulate CSS properties dynamically.</li>
+                    <li>Produce animated interactive effects using CSS properties.</li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>2. Manipulating CSS with JavaScript</h2>
+            <p>
+                JavaScript allows you to change CSS properties of HTML elements in real-time. For example, you can modify the background color or size of an element based on user actions.
+            </p>
+            <pre>
+document.getElementById("myElement").style.backgroundColor = "blue";
+            </pre>
+            <p>
+                This code changes the background color of an element with `id="myElement"` to blue when executed.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>3. Creating Animated Effects with CSS Transitions</h2>
+            <p>
+                CSS Transitions provide smooth animations when CSS properties change. You can define the duration and timing function (e.g., `ease`, `linear`).
+            </p>
+            <pre>
+.element {
+    width: 100px;
+    transition: width 1s ease;
+}
+.element:hover {
+    width: 200px;
+}
+            </pre>
+            <p>
+                When hovering over the element, its width increases smoothly from 100px to 200px over 1 second.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>4. Using CSS Transforms</h2>
+            <p>
+                CSS Transforms allow you to rotate, scale, or translate elements. Combined with Transitions, you can create dynamic effects.
+            </p>
+            <pre>
+.element {
+    transition: transform 0.5s;
+}
+.element:hover {
+    transform: rotate(90deg) scale(1.2);
+}
+            </pre>
+            <div class="demo">
+                <h3>Live Demo</h3>
+                <p>Hover over the box to see the transition and transform effect:</p>
+                <div class="demo-box">Hover Me</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
