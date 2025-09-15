@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Object Practice</title>
+    <script>
+        function demoObject() {
+            var info = {
+                name: "John",
+                dob: new Date("1996-01-20"),
+                year: 2
+            };
+            console.log("Name (dot notation): " + info.name);
+            console.log("Year (bracket notation): " + info["year"]);
+            info["firstName"] = "John"; // Named index
+            console.log(info);
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript Object</h1>
+    <button onclick="demoObject()">Run Object Demo</button>
+</body>
+</html>

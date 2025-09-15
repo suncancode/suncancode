@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Array Practice</title>
+    <script>
+        function demoArray() {
+            var subjectList = ["ISIT206", "MATH121", "CSCI301"];
+            subjectList[1] = "LOGIC101";
+            subjectList[6] = "LAW201"; // Creates holes
+            console.log("Array length: " + subjectList.length);
+            for (var i = 0; i < subjectList.length; i++) {
+                console.log("Item " + i + ": " + subjectList[i]);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript Array</h1>
+    <button onclick="demoArray()">Run Array Demo</button>
+</body>
+</html>

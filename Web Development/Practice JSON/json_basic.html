@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Basics Practice</title>
+</head>
+<body>
+    <h1>JSON Structure</h1>
+    <button onclick="demoJSON()">Run JSON Demo</button>
+    <script>
+        function demoJSON() {
+            var studentJSON = {
+                "fullname": "John Smith",
+                "studentNumber": "U1234567",
+                "age": 20,
+                "csMajor": true,
+                "subjectList": [
+                    {"code": "MATH101", "title": "Algebra"},
+                    {"code": "CSIT122", "title": "C programming"}
+                ]
+            };
+            console.log("JSON Object:");
+            console.log(studentJSON);
+            console.log("Access nested: " + studentJSON.subjectList[0].title);
+        }
+    </script>
+</body>
+</html>
