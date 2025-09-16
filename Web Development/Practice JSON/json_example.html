@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Example</title>
+    <script>
+        function example1() {
+            // Create a student object
+            var studentObj = {
+                fullname: "John Smith",
+                studentNumber: "123456",
+                age: 20,
+                csMajor: true
+            };
+            // Convert the object to a JSON string
+            var studentJSON = JSON.stringify(studentObj);
+
+            // Display the JSON string
+            console.log("Example 1: " + studentJSON);
+        }
+        function example2() {
+            // A JSON string (note: property names and string values must use double quotes)
+            var studentJSON = `{
+                "fullname": "John Smith",
+                "studentNumber": "123456",
+                "age": "20",
+                "csMajor": "true"
+            }`;           
+            // Parse the JSON string back to an object
+            var studentObj = JSON.parse(studentJSON);
+
+            // Display the object and access a property
+            console.log("Example 2: \n", studentObj);
+            console.log("Full name: " + studentObj.fullname);
+        }
+        function example3() {
+            // Create an array of user objects
+            var user1 = {
+                firstname: "John",
+                lastname: "Smith"
+            };
+            var user2 = {
+                firstname: "Kate",
+                lastname: "Hehe"
+            };
+            var userList = [user1, user2];
+            // Convert the array to a JSON string
+            var userListJSON = JSON.stringify(userList);
+
+            // Display the JSON string
+            console.log("Example 3: " + userListJSON);
+        }
+        function example4() {
+            // A JSON string representing an array of user objects
+            var userListJSON = `[
+                {"firstName":"John", "lastName":"Smith"},
+                {"firstName":"Kate", "lastName":"Williams"}
+            ]`;
+            // Parse the JSON string back to an array of objects
+            var userList = JSON.parse(userListJSON);
+
+            // Display the array and its length
+            console.table(userList);
+            console.log(userList);
+            console.log("Example 4: \n" + userList);
+            console.log("Number of users: " + userList.length);
+        }
+        function example5() {
+            // Create a student object with a nested array of subjects
+            var studentObj = {
+                firstname: "John",
+                lastname: "Smith",
+                subjectList: []
+            }
+            // Add subjects to the subjectList array
+            studentObj.subjectList.push({
+                code: "CSIT882",
+                title: "Web Development"
+            })
+            studentObj.subjectList.push({
+                code: "CSIT881",
+                title: "Programming and Data Structure"
+            })
+            // Convert the object to a JSON string with indentation
+            var studentJSON = JSON.stringify(studentObj, null, 2);
+
+            // Display the JSON string
+            console.log("Example 5: \n" + studentJSON);
+        }
+    </script>
+</head>
+<body>
+    <h1>JSON Examples</h1>
+    <!-- Buttons to run each example -->
+    <button onClick="example1()">Example 1: Stringify Object</button> <br>
+    <button onClick="example2()">Example 2: Parse Object</button> <br>
+    <button onClick="example3()">Example 3: Stringify Array</button> <br>
+    <button onClick="example4()">Example 4: Parse Array</button> <br>
+    <button onClick="example5()">Example 5: Stringify Nested</button> <br>
+</body>
+</html>

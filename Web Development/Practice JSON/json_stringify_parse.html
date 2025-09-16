@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Stringify and Parse Practice</title>
+    <script>
+        function demoStringifyParse() {
+            // Create a student object
+            var studentObj = {
+                fullname: "John Smith",
+                studentNumber: "123456",
+                age: 20,
+                csMajor: false
+            };
+
+            // Convert the object to a JSON string
+            var jsonStr = JSON.stringify(studentObj);
+            console.log("Stringify (no indent): " + jsonStr);
+
+            // Convert the object to a JSON string with indentation
+            var jsonStrIndented = JSON.stringify(studentObj, null, 2);
+            var jsonFiltered = JSON.stringify(studentObj, ["studentNumber", "csMajor"], 2);
+            console.log("Stringify (filtered): \n" + jsonFiltered);
+
+            // Parse the JSON string back to an object
+            var parsedObj = JSON.parse(jsonStr);
+            console.log("Parsed Object: ", parsedObj);
+        }
+    </script>
+</head>
+<body>
+    <h1>JSON Stringify and Parse</h1>
+    // A button to run the demo function
+    <button onClick="demoStringifyParse()">Run Demo</button>
+</body>
+</html>

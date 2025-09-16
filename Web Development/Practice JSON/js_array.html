@@ -5,9 +5,12 @@
     <title>JavaScript Array Practice</title>
     <script>
         function demoArray() {
+            // Create and manipulate an array
             var subjectList = ["ISIT206", "MATH121", "CSCI301"];
             subjectList[1] = "LOGIC101";
             subjectList[6] = "LAW201"; // Creates holes
+
+            // Log array details
             console.log("Array length: " + subjectList.length);
             for (var i = 0; i < subjectList.length; i++) {
                 console.log("Item " + i + ": " + subjectList[i]);
@@ -17,6 +20,7 @@
 </head>
 <body>
     <h1>JavaScript Array</h1>
+    // A button to run the array demo function
     <button onclick="demoArray()">Run Array Demo</button>
 </body>
 </html>

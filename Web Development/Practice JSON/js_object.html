@@ -5,13 +5,18 @@
     <title>JavaScript Object Practice</title>
     <script>
         function demoObject() {
+            // Create and manipulate an object
             var info = {
                 name: "John",
                 dob: new Date("1996-01-20"),
                 year: 2
             };
+
+            // Log object details
             console.log("Name (dot notation): " + info.name);
             console.log("Year (bracket notation): " + info["year"]);
+            
+            // Add new properties
             info["firstName"] = "John"; // Named index
             console.log(info);
         }
@@ -19,6 +24,7 @@
 </head>
 <body>
     <h1>JavaScript Object</h1>
+    // A button to run the object demo function
     <button onclick="demoObject()">Run Object Demo</button>
 </body>
 </html>

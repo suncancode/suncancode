@@ -9,6 +9,7 @@
     <button onclick="demoJSON()">Run JSON Demo</button>
     <script>
         function demoJSON() {
+            // Define a JSON object representing a student
             var studentJSON = {
                 "fullname": "John Smith",
                 "studentNumber": "U1234567",
@@ -19,6 +20,8 @@
                     {"code": "CSIT122", "title": "C programming"}
                 ]
             };
+
+            // Log the JSON object and access nested data
             console.log("JSON Object:");
             console.log(studentJSON);
             console.log("Access nested: " + studentJSON.subjectList[0].title);
