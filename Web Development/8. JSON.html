@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 8A - JSON and JavaScript Arrays</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+        pre {
+            background: #ecf0f1;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+        }
+        code {
+            background: #dfe6e9;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .example {
+            background: #e8f4f8;
+            padding: 1rem;
+            border-left: 4px solid #3498db;
+            margin: 1rem 0;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #output, #json-output {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #2c3e50;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <h2>1. Introduction to JavaScript Arrays</h2>
+            <p>
+                A JavaScript Array is a special variable that can hold multiple values in a single structure. Arrays are useful for storing lists of items, such as names, numbers, or objects. They are dynamic, meaning you can add or remove elements after creation.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>2. Creating and Initializing Arrays</h2>
+            <p>
+                Arrays can be created using square brackets <code>[]</code>. You can initialize an array with values or leave it empty.
+            </p>
+            <pre>
+var arrayName = [item0, item1, ...];
+var emptyArray = [];
+var subjectList = ["ISIT206", "MATH121", "CSCI301"];
+            </pre>
+            <p>
+                - <code>arrayName</code>: A variable holding the array.
+                - <code>emptyArray</code>: An empty array.
+                - <code>subjectList</code>: An array with initial values.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>3. Modifying Array Elements</h2>
+            <p>
+                You can modify array elements by assigning new values using their index (starting from 0). Adding elements beyond the current length creates "holes" (undefined spaces) in the array.
+            </p>
+            <pre>
+subjectList[1] = "LOGIC101"; // Changes the second element
+subjectList[6] = "LAW201";   // Creates holes in the array
+            </pre>
+            <p>
+                - After <code>subjectList[1] = "LOGIC101"</code>, the array becomes <code>["ISIT206", "LOGIC101", "CSCI301"]</code>.
+                - <code>subjectList[6] = "LAW201"</code> adds a value at index 6, leaving indices 3, 4, and 5 as <code>undefined</code>.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>4. Looping Through an Array</h2>
+            <p>
+                You can iterate over array elements using a <code>for</code> loop with the <code>length</code> property to access each item.
+            </p>
+            <pre>
+for(var i = 0; i < subjectList.length; i++) {
+    alert(subjectList[i]);
+}
+            </pre>
+            <p>
+                This loop displays each element of <code>subjectList</code> in an alert box. For the array <code>["ISIT206", "LOGIC101", "CSCI301", undefined, undefined, undefined, "LAW201"]</code>, it will show each value, including <code>undefined</code> for holes.
+            </p>
+
+            <div class="example">
+                <h3>Live Example: Show Array</h3>
+                <button onclick="showArray()">Show Array</button>
+                <div id="output"></div>
+
+                <script>
+                    var subjectList = ["ISIT206", "MATH121", "CSCI301"];
+                    subjectList[1] = "LOGIC101";
+                    subjectList[6] = "LAW201";
+
+                    function showArray() {
+                        let output = document.getElementById("output");
+                        let result = "";
+                        for (var i = 0; i < subjectList.length; i++) {
+                            result += "Index " + i + ": " + (subjectList[i] || "undefined") + "<br>";
+                        }
+                        output.innerHTML = result;
+                    }
+                </script>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>5. JSON Stringify and Parse</h2>
+            <p>
+                JSON (JavaScript Object Notation) is a lightweight data interchange format. Two key methods allow conversion between JavaScript objects/arrays and JSON strings:
+            </p>
+            <ul>
+                <li><code>JSON.stringify()</code>: Converts a JavaScript object or array into a JSON string.</li>
+                <li><code>JSON.parse()</code>: Parses a JSON string back into a JavaScript object or array.</li>
+            </ul>
+
+            <pre>
+var subjectList = ["ISIT206", "LOGIC101", "CSCI301"];
+var jsonString = JSON.stringify(subjectList);
+console.log(jsonString); // Output: ["ISIT206","LOGIC101","CSCI301"]
+
+var parsedArray = JSON.parse(jsonString);
+console.log(parsedArray); // Output: ["ISIT206","LOGIC101","CSCI301"]
+            </pre>
+            <p>
+                - <code>JSON.stringify()</code> is useful for sending data to a server.
+                - <code>JSON.parse()</code> is used to process JSON data received from a server or stored locally.
+            </p>
+
+            <div class="example">
+                <h3>Live Example: Stringify and Parse</h3>
+                <button onclick="convertJSON()">Convert to JSON</button>
+                <button onclick="parseJSON()">Parse JSON</button>
+                <div id="json-output"></div>
+
+                <script>
+                    var subjectList = ["ISIT206", "LOGIC101", "CSCI301"];
+                    var jsonString = "";
+
+                    function convertJSON() {
+                        jsonString = JSON.stringify(subjectList);
+                        document.getElementById("json-output").innerHTML = "JSON String: " + jsonString;
+                    }
+
+                    function parseJSON() {
+                        if (jsonString) {
+                            var parsedArray = JSON.parse(jsonString);
+                            document.getElementById("json-output").innerHTML = "Parsed Array: " + parsedArray.join(", ");
+                        } else {
+                            document.getElementById("json-output").innerHTML = "Please convert to JSON first!";
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
