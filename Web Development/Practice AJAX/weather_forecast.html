@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Forecast Practice</title>
+    <script>
+        function makeAjaxQueryWeather() {
+            // Create a new XMLHttpRequest object
+            var xhttp = new XMLHttpRequest();
+            // Define handler for ready state changes
+            xhttp.onreadystatechange = function() {
+                // Check if the request is complete
+                if (xhttp.readyState == 4) {
+                    // Check if the request was successful
+                    if (xhttp.status == 200) {
+                        handleStatusSuccess(xhttp);
+                    } else {
+                        handleStatusFailure(xhttp);
+                    }
+                }
+            };
+            // Open an asynchronous GET request to weather.json
+            xhttp.open("GET", "weather.json", true);
+            // Send the request
+            xhttp.send();
+        }
+        function handleStatusFailure(xhttp) {
+            // Display error message if request fails
+            document.getElementById("display").innerHTML = "XMLHttpRequest failed: status " + xhttp.status;
+        }
+        function handleStatusSuccess(xhttp) {
+            // Parse the JSON response into a weather object
+            var weatherObj = JSON.parse(xhttp.responseText);
+            // Display the weather information
+            displayWeather(weatherObj);
+        }
+        function displayWeather(weatherObj) {
+            // Construct HTML to display weather data dynamically
+            var html = "<h1>" + weatherObj.queryLocation + "</h1>";
+            html += "<font size='5' color='gray'>" + weatherObj.forecast + "</font>";
+            html += "<br /><br />";
+            html += "<font size='7'>" + weatherObj.temperature.degree + "</font>&deg;" + weatherObj.temperature.scale;
+            html += "<br /><br />";
+            html += "<i>Humidity: " + weatherObj.humidity + "</i><br />";
+            html += "<i>Wind speed: " + weatherObj.windSpeed + "</i>";
+            // Update the display div with the constructed HTML
+            document.getElementById("display").innerHTML = html;
+        }
+    </script>
+</head>
+<body>
+    <h1>Weather Forecast</h1>
+    <button onclick="makeAjaxQueryWeather()">Get Weather JSON</button>
+    <div id="display"></div>
+</body>
+</html>

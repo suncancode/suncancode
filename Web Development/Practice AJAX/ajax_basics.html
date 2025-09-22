@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX Basics</title>
+    <script>
+        function makeAjaxQuery() {
+            // Create new XMLHttpRequest object
+            var xhttp = new XMLHttpRequest();
+            // Define handler for ready state changes
+            xhttp.onreadystatechange = function() {
+                // Check if the request is complete
+                if (xhttp.readyState == 4) {
+                    if (xhttp.status == 200) {
+                        handleStatusSuccess(xhttp);
+                    }
+                    else {
+                        handleStatusFailure(xhttp);
+                    }
+                }
+            };
+            // Open an asynchronous GET request to sample.json
+            xhttp.open("GET", "sample.json", true);
+            // Send the request
+            xhttp.send();
+        }
+        function handleStatusSuccess() {
+            // Parse the JSON response and display the name property
+            var obj = JSON.parse(xhttp.responseText);
+            document.getElementById("display").innerHTML = "Data: " + obj.name;
+        }
+        function handleStatusFailure() {
+            // Display error messsage if request fails
+            document.getElementById("display").innerHTML = "Error: " + xhttp.status;
+        }
+    </script>
+</head>
+<body>
+    <h1>AJAX Basics</h1>
+    <button onClick="makeAjaxQuery()">Fetch Data</button>
+    <div id="display"></div>
+</body>
+</html>

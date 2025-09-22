@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Market Practice</title>
+    <script>
+        function makeAjaxQueryMarket() {
+            // Create a new XMLHttpRequest object
+            var xhttp = new XMLHttpRequest();
+            // Define handler for ready state changes
+            xhttp.onreadystatechange = function() {
+                // Check if the request is complete
+                if (xhttp.readyState == 4) {
+                    // Check if the request was successful
+                    if (xhttp.status == 200) {
+                        handleStatusSuccess(xhttp);
+                    } else {
+                        handleStatusFailure(xhttp);
+                    }
+                }
+            };
+            // Open an asynchronous GET request to market.json
+            xhttp.open("GET", "market.json", true);
+            // Send the request
+            xhttp.send();
+        }
+        function handleStatusFailure(xhttp) {
+            // Display error message if request fails
+            document.getElementById("display").innerHTML = "Error: " + xhttp.status;
+        }
+        function handleStatusSuccess(xhttp) {
+            // Parse the JSON response into a market object
+            var marketObj = JSON.parse(xhttp.responseText);
+            // Display the market information
+            displayMarket(marketObj);
+        }
+        function displayMarket(marketObj) {
+            // Construct HTML for stock market table
+            var html = "<h2>Stock Market Activity " + marketObj.queryTime + "</h2>";
+            html += "<table border='1'><tr><th>Stock</th><th>Value</th><th>Change</th><th>Net / %</th></tr>";
+            // Loop through the stock list to build table rows
+            for (var i = 0; i < marketObj.stockList.length; i++) {
+                var stockObj = marketObj.stockList[i];
+                html += "<tr>";
+                html += "<td><b>" + stockObj.name + "</b></td>";
+                html += "<td align='right'>" + stockObj.value + "</td>";
+                // Apply color based on change value
+                if (stockObj.change < 0) {
+                    html += "<td style='color:red' align='right'>" + stockObj.change + "</td>";
+                } else {
+                    html += "<td style='color:green' align='right'>" + stockObj.change + "</td>";
+                }
+                html += "<td align='right'>" + stockObj.netpct + "%</td>";
+                html += "</tr>";
+            }
+            html += "</table>";
+            // Update the display div with the constructed HTML
+            document.getElementById("display").innerHTML = html;
+        }
+    </script>
+</head>
+<body>
+    <h1>Stock Market</h1>
+    <button onclick="makeAjaxQueryMarket()">Click here to view Stock Market Activity</button>
+    <div id="display"></div>
+</body>
+</html>
