@@ -1,0 +1,23 @@
+# Practice with random subject selection
+import random
+
+# Create an empty list for preferred subjects
+subject_list = []
+
+# Repeatedly ask for subject codes
+while True:
+    subject = input("Enter preferred subject code (enter QUIT to quit): ")
+    if subject.upper() == "QUIT":
+        break
+    subject_list.append(subject)
+
+# Display chosen subjects
+print("Your chosen list: ", subject_list)
+
+# Choose a random subject
+if subject_list:
+    random_index = random.randint(0, len(subject_list) - 1)
+    random_subject = subject_list[random_index]
+    print("You have been approved to enrol into ", random_subject)
+else:
+    print("No subject selected.")
