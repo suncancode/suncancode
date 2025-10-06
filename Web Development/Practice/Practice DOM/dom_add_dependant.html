@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Add Dependant Practice</title>
+    <script>
+        function addDependant() {
+            // Get input values
+            var firstName = document.getElementById("firstNameInput").value;
+            var lastName = document.getElementById("lastNameInput").value;
+            var relation = document.getElementById("relationInput").value;
+
+            // Create new list item  
+            var newItem = document.createElement("li");
+            // Add content to new item
+            newItem.textContent = firstName + " " + lastName + ", " + relation;
+            // Get list element
+            var list = document.getElementById("personList");
+            // Add new item to the list
+            list.appendChild(newItem);
+        }
+    </script>
+</head>
+<body>
+    <h1>Add Dependant</h1>
+    <input type="text" id="firstNameInput" placeholder="First Name"> <br>
+    <input type="text" id="lastNameInput" placeholder="Last Name"> <br>
+    <input type="text" id="relationInput" placeholder="Relation"> <br>
+    <button onClick="addDependant()">Add Dependant</button>
+    <ul id="personList"></ul>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic DOM Practice</title>
+    <script>
+        function changeContent() {
+            let title = document.getElementById("title");
+            let content = document.getElementById("content");
+            title.innerHTML = "DOM Updated!";
+            content.innerHTML = "New content added at " + new Date().toLocaleTimeString();
+        }
+    </script>
+</head>
+<body>
+    <h1 id="title">Welcome to DOM!</h1>
+    <p id="content">Click the button to change the content.</p>
+    <button onclick="changeContent()">Change</button>
+</body>
+</html>

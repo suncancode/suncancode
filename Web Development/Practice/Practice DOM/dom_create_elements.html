@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Create Elements Practice</title>
+    <script>
+        function createElementsDemo() {
+            // Create h2 element
+            var h2 = document.createElement("h2");
+            // Create text node for h2
+            var textNode = document.createTextNode("New Heading");
+            // Append text node to h2
+            h2.appendChild(textNode);
+
+            // Create p element
+            var p = document.createElement("p");
+            var pText = document.createTextNode("This is a new paragraph.");
+            p.appendChild(pText);
+
+            // Get container div and append element
+            var container = document.getElementById("container");
+            container.appendChild(h2);
+            container.appendChild(p);
+        }
+    </script>
+</head>
+<body>
+    <h1>Create Elements</h1>
+    <button onClick="createElementsDemo()">Add Element</button>
+    <div id="container"></div>
+</body>
+</html>

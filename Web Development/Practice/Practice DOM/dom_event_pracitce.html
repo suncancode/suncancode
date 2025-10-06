@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Event Practice</title>
+</head>
+<body>
+    <input type="text" id="inputText" placeholder="Enter Text">
+    <p id="displayText">Text will display here.</p>
+
+    <script>
+        let input = document.getElementById("inputText");
+        let display = document.getElementById("displayText");
+
+        input.addEventListener("input", function() {
+            display.innerHTML = "You entered: " + input.value;
+        });
+    </script>
+</body>
+</html>
+

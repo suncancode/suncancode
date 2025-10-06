@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 1</title>
+    <script>
+        function getFacultyDetails() {
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "question1.json", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    let faculty = JSON.parse(xhr.responseText);
+                    let output = `
+                        <br>
+                        <b>Name: </b> ${faculty.name} <br>
+                        <b>Abbreviation: </b> ${faculty.abbreviation} <br>
+                        <b>Email: </b> ${faculty.email} <br>
+                        <b>Website: </b> ${faculty.web} <br>
+                    `;
+                    document.getElementById("output").innerHTML = output;
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <button onClick="getFacultyDetails()">Get Faculty Details</button>
+    <div id="output"></div>
+</body>
+</html>

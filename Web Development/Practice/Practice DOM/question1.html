@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 1</title>
+    <script>
+        var bookCount = 0;
+        function Add() {
+            // Get user inputs: title, code, quantity from input fields
+            var title = document.getElementById("input1"); 
+            var code = document.getElementById("input2"); 
+            var quantity = document.getElementById("input3"); 
+
+            // Get unordered list element
+            var list = document.getElementById("orderList");
+            // Create new item for list
+            var newItem = document.createElement("li");
+            // Add content for new item
+            newItem.textContent = code.value + ": " + title.value + " x " + quantity.value;
+            // Add new item to the list
+            list.appendChild(newItem);
+
+            // Increament bookCount and update display
+            bookCount ++;
+            document.getElementById("total").innerHTML = bookCount;
+        }
+    </script>
+</head>
+    Enter book title: 
+    <input type="text" id="input1"> <br>
+    Enter product code: 
+    <input type="text" id="input2"> <br>
+    Enter quantity: 
+    <input type="number" id="input3"> <br>
+    <button onClick="Add()">Add to order</button>
+    <ul id="orderList"></ul>
+    Total number of books ordered: <div id="total">0</div>
+</html>

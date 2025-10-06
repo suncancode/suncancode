@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 2</title>
+    <script>
+        function makeAjaxQueryAirport() {
+            // Create Ajax Object
+            var xhttp = new XMLHttpRequest();
+
+            // Handle when status changes
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4) {
+                    if (xhttp.status == 200) {
+                        handleSuccess(xhttp);
+                    } else {
+                        handleFailure(xhttp);
+                    }
+                }
+            };
+
+            // Make GET request to JSON file
+            xhttp.open("GET", "question2.json", true);
+            xhttp.send();
+        }
+        function handleFailure(xhttp) {
+            // Display error
+            document.getElementById("display").innerHTML = "Error: " + xhttp.status;
+        }
+        function handleSuccess(xhttp) {
+            // Convert JSON to js object
+            var airportObj = JSON.parse(xhttp.responseText);
+            // Call display function
+            displayAirport(airportObj);
+        }
+        function displayAirport(airportObj) {
+            var html = "<h2>Search Query: " + airportObj.searchQuery + "</h2>";
+            html += `
+                <table border='1'>
+                    <tr>
+                        <th>Airport</th>
+                        <th>ICAO</th>
+                        <th>IATA</th>
+                        <th>Location</th>
+                    </tr>
+            `
+
+            // Loop through the list of airport
+            for (var i = 0; i < airportObj.searchResult.length; i++) {
+                var item = airportObj.searchResult[i];
+                html += "<tr>"
+                html += "<td><b>" + item.airportName + "</b></td>";
+                html += "<td>" + item.ICAO + "</td>";
+                html += "<td>" + item.IATA + "</td>";
+                html += "<td>" + item.city + ", " + item.country + "</td>";
+                html += "</tr>"
+            }
+
+            html += "</table>";
+            document.getElementById("display").innerHTML = html;
+        }
+    </script>
+</head>
+<body>
+    <button onClick="makeAjaxQueryAirport()">Search Airpot</button>
+    <div id="display"></div>
+</body>
+</html>

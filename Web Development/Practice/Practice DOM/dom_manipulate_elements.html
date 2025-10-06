@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Manipulate Elements Practice</title>
+    <script>
+        function manipulateElements() {
+            // Get elements
+            var title = document.getElementById("title");
+            var content = document.getElementById("content");
+
+            // Create new elements for replacement
+            var newTitle = document.createElement("h1");
+            var newText = document.createTextNode("New Title");
+            newTitle.appendChild(newText);
+
+            var newContent = document.createElement("p");
+            var newContentText = document.createTextNode("New content here.");
+            newContent.appendChild(newContentText);
+
+            // Replace old title with new one
+            document.body.replaceChild(newTitle, title);
+
+            // Remove the old content
+            document.body.removeChild(content);
+
+            // Add new content
+            document.body.appendChild(newContent);
+        }
+    </script>
+</head>
+<body>
+    <h1 id="title">Original Title</h1>
+    <p id="content">Original Content.</p>
+    <button onClick="manipulateElements()">Manipulate</button>
+</body>
+</html>
