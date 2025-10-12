@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Funny Page</title>
+    <style>
+        h1 {
+            cursor: pointer;
+            color: blue;
+        }
+        .box {
+            border: 1px solid black;
+            width: 300px;
+            height: 50px;
+            margin: 30px;
+            background-color: pink;
+            text-align: center;
+            font-size: 40px;
+            color: blue;
+            transition: transform 0.3s ease; 
+        }
+
+        /* Initial state and hover effect for box1 */
+        div#box1 {
+            transform: translate(0, 0); /* Initial position */
+        }
+        div#box1:hover {
+            transform: translate(30px, 30px); /* Move 30px down-right */
+        }
+
+        /* Initial state and hover effect for box2 */
+        div#box2 {
+            transform: rotate(0deg); /* Initial rotation */
+        }
+        div#box2:hover {
+            transform: rotate(-45deg); /* Rotate 45deg to the left */
+        }
+
+        /* Initial state and hover effect for box3*/
+        div#box3 {
+            transform: scale(1); /* Initial size */
+        }
+        div#box3:hover {
+            transform: scale(2); /* Double the size */
+        }
+    </style>
+    <script>
+        // Variable to track title color
+        var titleColor = "blue";
+        // Function to change title color randomly
+        function changeTitleColor() {
+            var colors = ["red", "green", "violet", "orange"];
+            var title = document.getElementById("funTitle");
+            titleColor = colors[Math.floor(Math.random() * colors.length)];
+            title.style.color = titleColor;
+        }
+    </script>
+</head>
+<body>
+    <h1 id="funTitle" onMouseOver="changeTitleColor();">This is for fun</h1>
+    <div id="box1" class="box">ONE</div>
+    <div id="box2" class="box">TWO</div>
+    <div id="box3" class="box">THREE</div>
+</body>
+</html>
