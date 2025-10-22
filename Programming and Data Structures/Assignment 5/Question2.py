@@ -77,17 +77,17 @@ class Network():
 network = Network()
 
 # Get user input of sensors
-num_sensors = int(input("Enter number of sensors: "))
+num_sensors = float(input("Enter number of sensors: "))
 sensor_count = 0
 
 while sensor_count < num_sensors:
     name = input("Enter name: ")
     readings = []
-    num_readings = int(input("Enter number of readings: "))
+    num_readings = float(input("Enter number of readings: "))
     reading_count = 0
     
     while reading_count < num_readings:
-        reading = int(input("Enter reading: "))
+        reading = float(input("Enter reading: "))
         readings.append(reading)
         reading_count += 1 # Reading count increament
     

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 2</title>
+    <style>
+        .animalText {
+            font-size: 40px;
+            border-style: solid;
+            border-color: black;
+            border-width: 1px;
+        }
+    </style>
+</head>
+<body>
+    Drag an animal and drop it on the corresponding text.
+    <br><br>
+    <!-- Droppable elements -->
+    <div>
+        <span class="animalText">
+            <span id="dogText" onDrop="drop(event)" onDragOver="dragOver(event)">Dog</span>
+            <span id="dogCountHolder">0</span>
+        </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="animalText">
+            <span id="catText" onDrop="drop(event)" onDragOver="dragOver(event)">Cat</span>
+            <span id="catCountHolder">0</span>
+        </span>
+    </div>
+    <br><br>
+    
+    <!-- Draggable elements-->
+    <div id="animalImages">
+        <img 
+            src="img/cat.jpg" 
+            alt="cat image" 
+            draggable="true" 
+            ondragstart="dragStart(event)" 
+            id="catImage"
+            height="200px">
+        <img 
+            src="img/dog.jpg" 
+            alt="dog image" 
+            draggable="true" 
+            ondragstart="dragStart(event)" 
+            id="dogImage"
+            height="200px">
+    </div>
+
+    <script>
+        var dogCounter = 0;
+        var catCounter = 0;
+
+        function dragStart(event) {
+            // Get the drag element id
+            var dragId = event.target.id;
+            
+            // Store drag Id into dataTransfer object
+            event.dataTransfer.setData("dragId", dragId);
+        }
+        function drop(event) {
+            // Get the drop element id
+            var dropId = event.target.id;
+
+            // Retrieve drag id from dataTransfer object
+            var dragId = event.dataTransfer.getData("dragId");
+
+            // Writing drag-drop logic
+            if ((dropId == "dogText") && (dragId == "dogImage")) {
+                dogCounter ++;
+                document.getElementById("dogCountHolder").innerHTML = dogCounter;
+            } 
+            if ((dropId == "catText") && (dragId == "catImage")) {
+                catCounter ++;
+                document.getElementById("catCountHolder").innerHTML = catCounter;
+            }
+        }
+        function dragOver(event) {
+            event.preventDefault();
+        }
+    </script>
+</body>
+</html>

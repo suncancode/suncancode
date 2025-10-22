@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 11B - Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 20px;
+        }
+        .section {
+            background-color: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+        code {
+            background-color: #ecf0f1;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .example {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lecture 11B - Form Validation</h1>
+
+    <div class="section">
+        <h2>1. Objectives</h2>
+        <ul>
+            <li>Understand and implement <strong>built-in form validation</strong> using HTML5 attributes.</li>
+            <li>Use <strong>JavaScript</strong> to perform custom form validation.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>2. Built-in Form Validation</h2>
+        <p>
+            HTML5 provides built-in validation using attributes to enforce data integrity without JavaScript.
+        </p>
+        <ul>
+            <li><code>required</code>: Ensures a field must be filled out.</li>
+            <li><code>min</code> and <code>max</code>: Sets minimum and maximum values for numbers.</li>
+            <li><code>minlength</code> and <code>maxlength</code>: Sets minimum and maximum length for text.</li>
+            <li><code>pattern</code>: Defines a regular expression for input validation (e.g., email format).</li>
+            <li><code>type="email"</code>, <code>type="number"</code>: Validates input type automatically.</li>
+        </ul>
+        <div class="example">
+            <code>&lt;input type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" /&gt;</code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>3. JavaScript Form Validation</h2>
+        <p>
+            JavaScript allows custom validation logic for more complex requirements.
+        </p>
+        <ul>
+            <li><code>checkValidity()</code>: Checks if all input elements in a form are valid.</li>
+            <li><code>setCustomValidity(message)</code>: Sets a custom error message.</li>
+            <li>Events: <code>onsubmit</code>, <code>onchange</code>, <code>oninput</code> for real-time validation.</li>
+        </ul>
+        <div class="example">
+            <code>
+                document.getElementById("myForm").onsubmit = function() {<br>
+                    &nbsp;&nbsp;if (!this.checkValidity()) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;alert("Please fill out the form correctly!");<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;return false;<br>
+                    &nbsp;&nbsp;}<br>
+                };
+            </code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>4. Practical Applications</h2>
+        <p>
+            Form validation ensures data quality in web applications, such as:
+        </p>
+        <ul>
+            <li>Registration forms with email and password checks.</li>
+            <li>Order forms with quantity and price validation.</li>
+            <li>Real-time feedback for user input.</li>
+        </ul>
+    </div>
+</body>
+</html>

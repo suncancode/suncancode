@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Built-in Form Validation</title>
+    <style>
+        form {
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="return false;">
+        <label for="email">Email (required, valid form):</label>
+        <input type="email" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+        <label for="age">Age (between 10 and 100):</label>
+        <input type="number" id="age" min="18" max="100" required>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

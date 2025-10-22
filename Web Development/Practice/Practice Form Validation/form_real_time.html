@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real-time Form Validation</title>
+    <style>
+        form {
+            margin: 20px;
+        }
+        label {
+            display:block;
+            margin: 10px 0 5px;
+        }
+        input {
+            padding: 5px;
+        }
+        #error {
+            color:red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="return validateForm(event)">
+        <label for="password">Password (at least 6 characters)</label>
+        <input type="password" id="password" oninput="validatePassword()">
+        <div id="error">Password must be at least 6 characters!</div>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        function validateForm(event) {
+            var password = document.getElementById("password");
+            var error = document.getElementById("error");
+
+            if (password.value.length < 6) {
+                error.style.display = "block";
+            } else {
+                error.value.display = "none";
+            }
+        }
+
+        function validatePassword() {
+            event.preventDefault();
+            var password = document.getElementById("password");
+            var error = document.getElementById("error");
+
+            if (password.value.length < 6) {
+                error.style.display = "block";
+                return false;
+            } else {
+                alert("Form submitted successfully!")
+                return true
+            }
+        }
+    </script>
+</body>
+</html>

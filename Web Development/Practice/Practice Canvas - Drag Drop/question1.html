@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 1</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Enter coordinate for 1st point:</td>
+            <td>X= <input type="text" id="x1" size="5"></td>
+            <td>Y= <input type="text" id="y1" size="5"></td>
+        </tr>
+        <tr>
+            <td>Enter coordinate for 2nd point:</td>
+            <td>X= <input type="text" id="x2" size="5"></td>
+            <td>Y= <input type="text" id="y2" size="5"></td>
+        </tr>
+        <tr>
+            <td>Enter coordinate for 3rd point:</td>
+            <td>X= <input type="text" id="x3" size="5"></td>
+            <td>Y= <input type="text" id="y3" size="5"></td>
+        </tr>
+    </table>
+    <canvas id="myCanvas" style="border: 4px dotted black;" width="400" height="300">
+        This browser doesn't support canvas.
+    </canvas> <br>
+    <button type="submit" onClick="drawTriangle()">
+        Draw triangle
+    </button>
+
+    <script>
+        function drawTriangle() {
+            // Get canvas 2d context
+            var canvas = document.getElementById("myCanvas");
+            var context = canvas.getContext("2d");
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Get coordinates from input
+            var x1 = parseInt(document.getElementById("x1").value);
+            var y1 = parseInt(document.getElementById("y1").value);
+            var x2 = parseInt(document.getElementById("x2").value);
+            var y2 = parseInt(document.getElementById("y2").value);
+            var x3 = parseInt(document.getElementById("x3").value);
+            var y3 = parseInt(document.getElementById("y3").value);
+
+            // Draw triangle
+            context.beginPath();
+            context.moveTo(x1, y1);
+            context.lineTo(x2, y2);
+            context.lineTo(x3, y3);
+            context.closePath();
+
+            // Create triangle stroke
+            context.strokeStyle = "#8B008B";
+            context.lineWidth = 3;
+            context.stroke();
+
+            // Create trianlge fill
+            context.fillStyle = "#DDA0DA";
+            context.fill();
+
+            // Create median style
+            context.strokeStyle = "white";
+            context.lineWidth = "2";
+
+            // Draw medians lines
+            context.beginPath();
+            context.moveTo(x1, y1);
+            context.lineTo((x2 + x3) / 2, (y2 + y3) / 2);
+            context.stroke();
+            context.moveTo(x2, y2);
+            context.lineTo((x1 + x3) / 2, (y1 + y3) / 2);
+            context.stroke();
+            context.moveTo(x3, y3);
+            context.lineTo((x2 + x1) / 2, (y2 + y1) / 2);
+            context.stroke();
+
+            // Add triangle label
+            context.fillStyle = "#000";
+            context.font = "16px bold Helvetica Neue";
+            context.fillText("A", x1, y1);
+            context.fillText("B", x2, y2);
+            context.fillText("C", x3, y3);
+        }
+
+        // Draw initial triangle with default values
+        window.onload = drawTriangle;
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Question 3</title>
+    <style>
+        .animalText {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    Drag an animal and drop it on the corresponding text.
+    <br><br>
+    <!-- Droppable elements -->
+    <span class="animalText">
+        <span id="dogText" onDrop="drop(event)" onDragOver="dragOver(event)">Dog</span>
+        <span id="dogImageHolder"></span>
+    </span>
+    <br><br>
+    <span class="animalText">
+        <span id="catText" onDrop="drop(event)" onDragOver="dragOver(event)">Cat</span>
+        <span id="catImageHolder"></span>
+    </span>
+    <br><br>
+    
+    <!-- Draggable elements-->
+    <div id="animalImages">
+        <img 
+            src="img/cat.jpg" 
+            alt="cat image" 
+            draggable="true" 
+            ondragstart="dragStart(event)" 
+            id="catImage"
+            height="200px">
+        <img 
+            src="img/dog.jpg" 
+            alt="dog image" 
+            draggable="true" 
+            ondragstart="dragStart(event)" 
+            id="dogImage"
+            height="200px">
+    </div>
+
+    <script>
+        var dogCounter = 0;
+        var catCounter = 0;
+
+        function dragStart(event) {
+            // Get the drag element id
+            var dragId = event.target.id;
+            
+            // Store drag Id into dataTransfer object
+            event.dataTransfer.setData("dragId", dragId);
+        }
+        function drop(event) {
+            // Get the drop element id
+            var dropId = event.target.id;
+
+            // Retrieve drag id from dataTransfer object
+            var dragId = event.dataTransfer.getData("dragId");
+
+            // Writing drag-drop logic
+            if ((dropId == "dogText") && (dragId == "dogImage")) {
+                dogCounter ++;
+                var html = displayImages("img/dog.jpg", dogCounter);
+                document.getElementById("dogImageHolder").innerHTML = html;
+            } 
+            if ((dropId == "catText") && (dragId == "catImage")) {
+                catCounter ++;
+                var html = displayImages("img/cat.jpg", catCounter);
+                document.getElementById("catImageHolder").innerHTML = html;
+            }
+        }
+        function dragOver(event) {
+            event.preventDefault();
+        }
+        function displayImages(source, count) {
+            var html = "";
+            for (let i=0; i<count; i++) {
+                html += "<img src='" + source + "' height='200px' />";
+            }
+            return html;
+        }
+    </script>
+</body>
+</html>
