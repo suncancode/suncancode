@@ -81,14 +81,14 @@
 
 ---
 
-## 9. Network Architecture Design Elements
+## 7. Network Architecture Design Elements
 ### Categories
 - **Concept Elements**: Business environment, technology, scalability, dependability, security, management, compatibility, limitations, flexibility, distribution, optimization, risks, performance, simplicity.
 - **Technology Elements**: Nodes, links, topology, interfaces, services, protocols, traffic mapping.
 
 ---
 
-## 10. Guidelines and Constraints
+## 8. Guidelines and Constraints
 ### Predictable/Guaranteed Requirements
 - Restrict to technologies supporting stable RMA, capacity, delay (QoS, DiffServ, IntServ).
 - Must determine state, allocate, prioritize, bill, handle over-demand; configure buffers, I/O, CPU.
@@ -101,14 +101,14 @@
 
 ---
 
-## 11. Making Technology Choices
+## 9. Making Technology Choices
 ### Method
 - Segment network, use black box method, apply criteria/guidelines per area.
 - Segmentation based on geography, user concentration, flow hierarchy, functions (WAN, NAP, core, specialized, general).
 
 ---
 
-## 12. Network Layout
+## 10. Network Layout
 ### Factors
 - Topology, technology, vendor choices, strategic locations; develops logical diagrams, blueprints, component plans.
 
@@ -127,13 +127,13 @@
 
 ---
 
-## 13. Design Traceability
+## 11. Design Traceability
 ### Concept
 - Links analysis, architecture, and design decisions for transparency and defensibility.
 
 ---
 
-## 14. Design Metrics
+## 12. Design Metrics
 ### Measurement
 - Measures capacity, delay, RMA, and user/device requirements.
 - Summarizes performance in an SLA-like document.
