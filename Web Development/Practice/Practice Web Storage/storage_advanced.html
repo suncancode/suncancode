@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Web Storage</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        input, button { margin: 5px; padding: 5px; }
+        #cart { margin-top: 10px; }
+        </style>
+</head>
+<body>
+    <h2>Advanced Storage Example</h2>
+    <input type="text" id="item" placeholder="Enter Item">
+    <button onClick="addToCart()">Add to Cart (localStorage)</button>
+    <button onClick="addToSession()">Add to Session (sessionStorage)</button>
+    <button onClick="clearCart()">Clear Cart</button>
+    <div id="cart">Cart (localStorage)</div>
+    <div id="sessionCart">Session Cart (sessionCart)</div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let sessionCart = JSON.parse(sessionStorage.getItem("sessionCart")) || [];
+
+        function addToCart() {
+            const item = document.getElementById("item").value;
+
+            if (item) { 
+                cart.push(item);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                updateDisplay();
+            }
+        }
+
+        function addToSession() {
+            const item = document.getElementById("item").value;
+            if (item) {
+                sessionCart.push(item);
+                sessionStorage.setItem("sessionCart", JSON.stringify(sessionCart));
+                updateDisplay();
+            }
+        }
+
+        function clearCart() {
+            localStorage.removeItem("cart");
+            sessionStorage.removeItem("sessionCart");
+            cart = [];
+            sessionCart = [];
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            document.getElementById("cartItems").textContent = cart.join(", ");
+            document.getElementById("sessionItems").textContent = sessionCart.join(", ");
+            
+            window.onload = updateDisplay;
+        }
+    </script>
+</body>
+</html>

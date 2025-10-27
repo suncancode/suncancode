@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Storage Application</title>
+    <style>
+        body {
+            font-family: Arial, san-serif;
+            margin: 20px;
+        }
+        .theme-light {
+            background-color: #fff;
+            color: #333;
+        }
+        .theme-dark {
+            background-color: #333;
+            color: #fff;
+        }
+        button {
+            padding: 5px, 10px;
+        }
+    </style>
+</head>
+<body class="theme-light" id="body">
+    <h2>Theme Toggle with Web Storage</h2>
+    <button onClick="toggleTheme()">Toggle Dark Mode</button>
+    <p>Current Theme is saved in localStorage and persists across sessions.</p>
+
+    <script>
+        // Load saved theme
+        const savedTheme = localStorage.getItem("theme");
+
+        if(savedTheme) {
+            document.getElementById("body").className = savedTheme;
+        }
+
+        function toggleTheme() {
+            const body = document.getElementById("body");
+
+            if (body.className === "theme-light") {
+                body.className = "theme-dark";
+                localStorage.setItem("theme", "theme-dark");
+            } else {
+                body.className = "theme-light";
+                localStorage.setItem("theme", "theme-light");
+            }
+        }
+    </script>
+
+</body>
+</html>

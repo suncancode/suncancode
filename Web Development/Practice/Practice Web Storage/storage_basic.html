@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Web Storage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Basic Storage Example</h2>
+    <input type="text" id="key" placeholder="Enter key">
+    <input type="text" id="value" placeholder="Enter value">
+    <button onClick="saveData()">Save</button>
+    <button onClick="getData()">Get</button>
+    <p>Result: <span id="result"></span></p>
+
+    <script>
+        function saveData() {
+            const key = document.getElementById("key").value;
+            const value = document.getElementById("value").value;
+            
+            localStorage.setItem(key, value);
+            alert("Data saved!");
+        }
+
+        function getData() {
+            const key = document.getElementById("key").value;
+            const value = document.getElementById("value").value;
+
+            document.getElementById("result").textContent = value || "No Data found";
+        }
+    </script>
+</body>
+</html>
