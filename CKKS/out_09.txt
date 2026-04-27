@@ -1,0 +1,59 @@
+=================================================================
+PRECISION LOSS — USING NON-TRIVIAL VALUES
+=================================================================
+
+True value: 0.785398163397448
+
+Mults | Level |         Decrypted[0] |    Abs Error | Precision
+---------------------------------------------------------------------------
+    0 |     0 |    0.785398160000000 |     3.40e-09 | ~28 bits remaining
+    1 |     1 |    0.785319620000000 |     3.58e-09 | ~28 bits remaining
+    2 |     2 |    0.785241090000000 |     1.62e-09 | ~29 bits remaining
+    3 |     3 |    0.785162570000000 |     2.49e-09 | ~28 bits remaining
+    4 |     4 |    0.785084050000000 |     1.25e-09 | ~29 bits remaining
+    5 |     5 |    0.785005540000000 |     2.85e-09 | ~28 bits remaining
+    6 |     6 |    0.784927040000000 |     2.29e-09 | ~28 bits remaining
+
+=================================================================
+PARAMETER SELECTION GUIDE (FIXED)
+=================================================================
+
+Use case                            |   D |    Δ |      N |  Slots | Final precision
+-------------------------------------------------------------------------------------
+Dot product (n=8)                   |   1 |   50 |  16384 |   8192 | ~ 40 bits (~13 dec)
+Logistic regression                 |   5 |   50 |  32768 |  16384 | ~ 24 bits (~8 dec)
+Degree-7 poly activation            |   4 |   50 |  16384 |   8192 | ~ 28 bits (~9 dec)
+2-layer NN (depth 10)               |  10 |   50 |  32768 |  16384 | ~  4 bits (~1 dec) ← WARNING: low precision!
+Deep circuit — boost precision      |  10 |   59 |  65536 |  32768 | ~ 13 bits (~4 dec) ← WARNING: low precision!
+Fast low-precision                  |   3 |   40 |  16384 |   8192 | ~ 22 bits (~7 dec)
+
+=================================================================
+WHY DEEP CIRCUITS LOSE PRECISION
+=================================================================
+
+Budget breakdown for Depth=10, ScalingModSize=50:
+
+  Starting budget:          50 bits
+  Encryption noise:         -6 bits  → 44 bits
+  Per-multiplication loss:  -4 bits × 10 = -40 bits
+                            ─────────────────────
+  Remaining:                 4 bits  ← barely usable!
+
+Fix options:
+  Option A: Increase ScalingModSize to 59
+            → 59 - 6 - 40 = 13 bits remaining (better)
+
+  Option B: Reduce depth (optimize circuit)
+            depth=5: 50 - 6 - 20 = 24 bits ✓
+
+  Option C: Use bootstrapping
+            → Refresh modulus mid-circuit
+            → Maintain precision throughout
+            → But adds ~20 levels overhead
+
+Rule of thumb:
+  Target final precision ≥ 20 bits for ML tasks
+  → ScalingModSize ≥ 6 + 4×depth + 20
+  → For depth=10: ScalingModSize ≥ 66... exceeds limit!
+  → Must use bootstrapping for depth > 10
+

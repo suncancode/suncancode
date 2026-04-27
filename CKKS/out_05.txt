@@ -1,0 +1,37 @@
+Input x:               [0.5, 1.0, 1.5, 2.0]
+Expected f(x)=(x+1)^2: [2.25, 4.0, 6.25, 9.0]
+
+Level after encrypt: 0
+
+--- METHOD 1: Direct Computation ---
+Circuit: f(x) = x*x + x + x + 1
+After x^2:       level = 1
+After 2x:        level = 0
+After x^2+2x:    level = 1
+After +1:        level = 1
+
+Expected: [2.25, 4.0, 6.25, 9.0]
+Got:      (2.25, 4, 6.25, 9, ... ); Estimated precision: 42 bits
+
+
+--- METHOD 2: Horner's Method ---
+Circuit: f(x) = 1 + x*(2 + x*1)
+After x*1:       level = 1
+After +2:        level = 1
+After x*(x+2):   level = 2
+After +1:        level = 2
+
+Expected: [2.25, 4.0, 6.25, 9.0]
+Got:      (2.25, 4, 6.25, 9, ... ); Estimated precision: 40 bits
+
+
+--- DEPTH ANALYSIS ---
+Both methods use 2 multiplications for degree-2 poly
+General rule: degree-d poly needs d multiplications (naive)
+              Horner reduces to exactly d multiplications
+              Paterson-Stockmeyer reduces to ~2*sqrt(d)
+
+For PPML activation functions:
+  sigmoid degree-7  -> 7 mults (naive) or 4 (Horner)
+  sigmoid degree-15 -> 15 mults (naive) or 8 (Horner)
+  -> This is why depth budget is a critical resource!

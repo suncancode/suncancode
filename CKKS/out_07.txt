@@ -1,0 +1,39 @@
+============================================================
+HOW PARAMETERS MAP TO MODULUS CHAIN
+============================================================
+
+Parameters set:
+  MultiplicativeDepth = 3
+  ScalingModSize      = 50 bits
+  → Delta             = 2^50
+  → Total modulus     ≈ 210 bits
+  → Ring dimension N  = 16384
+  → Max slots         = 8192
+
+============================================================
+LEVEL CONSUMPTION THROUGH CIRCUIT
+============================================================
+
+After Encrypt:   level=0  (modulus = q₀·Δ^3)
+After Mult 1:    level=1  (modulus = q₀·Δ^2)
+After Mult 2:    level=2  (modulus = q₀·Δ^1)
+After Mult 3:    level=3  (modulus = q₀·Δ^0 = q₀)
+
+============================================================
+WHAT HAPPENS IF YOU EXCEED DEPTH?
+============================================================
+Mult 4: no error raised by OpenFHE...
+Error: /root/openfhe-python-packager/build/openfhe-development/src/pke/lib/encoding/ckkspackedencoding.cpp:l.453:Decode(): The decryption failed because the approximation error is too high. Check the parameters. 
+
+============================================================
+PRECISION LOSS PER MULTIPLICATION
+============================================================
+
+ Mults |  Level |               Result | Precision
+------------------------------------------------------------
+     0 |      0 | (1, ... ); Estimated
+     1 |      1 | (1, ... ); Estimated
+     2 |      2 | (1, ... ); Estimated
+     3 |      3 | (1, ... ); Estimated
+     4 |      4 | (1, ... ); Estimated
+     5 |      5 | (1, ... ); Estimated

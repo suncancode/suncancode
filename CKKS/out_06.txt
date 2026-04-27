@@ -1,0 +1,45 @@
+=======================================================
+EXPERIMENT 1: Impact of MultiplicativeDepth
+=======================================================
+
+Depth= 2 | RingDim= 16384 | Setup time=0.108s
+
+Depth= 5 | RingDim= 32768 | Setup time=0.279s
+
+Depth=10 | RingDim= 32768 | Setup time=0.280s
+
+=======================================================
+EXPERIMENT 2: Impact of ScalingModSize (precision)
+=======================================================
+
+ScalingModSize=20 | Delta=2^20
+  Original:  1.234567890123456
+  Decrypted: (1.2345724, ... ); Estimated precision: 15 bits
+
+
+ScalingModSize=30 | Delta=2^30
+  Original:  1.234567890123456
+  Decrypted: (1.2345679, ... ); Estimated precision: 25 bits
+
+
+ScalingModSize=40 | Delta=2^40
+  Original:  1.234567890123456
+  Decrypted: (1.2345679, ... ); Estimated precision: 35 bits
+
+
+ScalingModSize=50 | Delta=2^50
+  Original:  1.234567890123456
+  Decrypted: (1.2345679, ... ); Estimated precision: 45 bits
+
+
+=======================================================
+EXPERIMENT 3: BatchSize — slots per ciphertext
+=======================================================
+RingDimension = 16384
+Max slots     = 8192
+BatchSize set = 8
+
+Packed [1,2,3,4] into 8-slot ciphertext:
+Result: (1, 2, 3, 4, 7.1609385e-14, -2.6201263e-14, 1.6431301e-14, -6.0840222e-14, ... ); Estimated precision: 43 bits
+
+Observe: remaining slots are 0 (padding)

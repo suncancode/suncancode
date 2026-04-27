@@ -1,0 +1,20 @@
+Vector a: [1.0, 2.0, 3.0, 4.0]
+Vector b: [0.5, 1.5, 2.5, 3.5]
+Level after encrypt: 0
+
+--- ADDITION ---
+Expected:  [1.5, 3.5, 5.5, 7.5]
+Got:       (1.5, 3.5, 5.5, 7.5, ... ); Estimated precision: 44 bits
+
+Level after add: 0  (unchanged)
+
+--- MULTIPLICATION ---
+Expected:  [0.5, 3.0, 7.5, 14.0]
+Got:       (0.5, 3, 7.5, 14, ... ); Estimated precision: 41 bits
+
+Level after mult: 1  (decreased by 1)
+
+--- LEVEL SUMMARY ---
+After encrypt:  level = 0
+After add:      level = 0  (free operation)
+After mult:     level = 1  (costs 1 level)

@@ -1,0 +1,25 @@
+Rotation keys generated for steps: [1, 2, 4]
+
+Vector a: [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
+Vector b: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
+Expected dot product: 18.0
+
+--- STEP 1: Componentwise Multiply ---
+Level after mult: 1
+Intermediate slots: (0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, ... ); Estimated precision: 41 bits
+
+
+--- STEP 2: Rotate-and-Add (3 steps) ---
+  After rotate(1) + add: level = 1
+  After rotate(2) + add: level = 1
+  After rotate(4) + add: level = 1
+
+--- RESULT ---
+All slots: (18, 18, 18, 18, 18, 18, 18, 18, ... ); Estimated precision: 41 bits
+
+Slot 0 (dot product): (18, 18, 18, 18, 18, 18, 18, 18, ... ); Estimated precision: 41 bits
+
+Expected:             18.0
+
+Level after full dot product: 1
+Rotations used: 3 = log2(8)

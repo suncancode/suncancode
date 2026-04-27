@@ -1,0 +1,134 @@
+============================================================
+GROUP 1: ARITHMETIC OPERATIONS
+============================================================
+
+[EvalAdd] ct + ct
+  Level in / out: same level
+  Noise: B1 + B2
+  Cost: cheapest operation
+  EvalAdd(cx, cy)                        4.162 ms
+  Level: 0 → 0
+
+[EvalAdd] ct + plaintext (public constant)
+  Cost: cheaper than ct+ct (no key switching)
+  EvalAdd(cx, ptxt)                      6.846 ms
+  Level: 0 → 0
+
+[EvalSub] ct - ct
+  Same cost as EvalAdd
+  EvalSub(cx, cy)                        8.526 ms
+
+[EvalNegate] -ct
+  Free: just negate coefficients, no noise added
+  EvalNegate(cx)                         5.336 ms
+
+[EvalMult] ct * ct
+  Level in / out: level+1 (costs 1 level)
+  Noise: (v1*B2 + v2*B1 + B1*B2 + B_relin) / Delta
+  Cost: most expensive — relinearization + rescaling
+  EvalMult(cx, cy)                      54.241 ms
+  Level: 0 → 1
+
+[EvalMult] ct * plaintext (public constant)
+  No relinearization needed
+  But still costs 1 level (rescaling)
+  EvalMult(cx, ptxt)                    10.914 ms
+  Level: 0 → 1
+
+[EvalMult] ct * scalar (single number)
+  Cheapest multiplication — no level cost!
+  EvalMult(cx, 2.5)                      6.053 ms
+  Level: 0 → 1
+
+============================================================
+GROUP 2: ROTATION OPERATIONS
+============================================================
+
+[EvalRotate] rotate slots left by k
+  Level: unchanged
+  Cost: key switching — expensive but cheaper than mult
+  Requirement: must pre-generate rotation key for each step
+  EvalRotate(cx, 1)                     64.241 ms
+  Level: 0 → 0, first 3 slots: ['2', '3', '4']
+  EvalRotate(cx, 2)                     65.805 ms
+  Level: 0 → 0, first 3 slots: ['3', '4', '5']
+  EvalRotate(cx, 4)                     62.911 ms
+  Level: 0 → 0, first 3 slots: ['5', '6', '7']
+
+  Original first 3 slots: [1.0, 2.0, 3.0]
+  Rotate(1):              [2.0, 3.0, 4.0]  ← shifted left
+  Rotate(2):              [3.0, 4.0, 5.0]
+  Rotate(4):              [5.0, 6.0, 7.0]
+
+============================================================
+GROUP 3: COMMON PATTERNS IN PPML
+============================================================
+
+[Pattern 1] Scale by public scalar — FREE level
+  cx * 0.5: level 0 → 1
+
+[Pattern 2] Add bias (public constant) — FREE level
+  cx + 0.1: level 0 → 0
+
+[Pattern 3] w*x + b  (one step of linear layer)
+  EvalMult + EvalAdd: 38.049 ms
+  Level: 0 → 1
+
+[Pattern 4] EvalInnerProduct — built-in dot product
+  Internally does: mult + rotate-and-add
+  EvalInnerProduct: 207.027 ms
+  Level: 0 → 1
+  Expected: 20.4000, Got: 20.4000
+
+============================================================
+GROUP 4: LEVEL MANAGEMENT
+============================================================
+
+[ModReduce / EvalMult scalar] manually drop level
+  Use when: two ciphertexts at different levels
+  must be at same level before Add or Mult
+
+  cx        level = 0
+  cx_deep   level = 1
+  → Cannot add directly — must align levels first
+
+  After EvalMult(cx, 1.0): level = 1
+  EvalAdd now works:       level = 1
+  Result: (1.1, 2.4, 3.9, 5.6, ... ); Estimated precision: 40 bits
+
+
+[Auto level alignment in OpenFHE]
+  OpenFHE actually handles level mismatch automatically
+  for EvalAdd and EvalMult — it calls ModReduce internally
+  EvalAdd(level=0, level=1) → level = 1
+  Result: (1.1, 2.4, 3.9, 5.6, ... ); Estimated precision: 40 bits
+
+  → OpenFHE auto-reduces the higher level ciphertext ✓
+
+============================================================
+GROUP 5: COMPLETE TIMING SUMMARY
+============================================================
+
+Operation                     Time (ms)   vs Add   Level Notes
+───────────────────────────────────────────────────────────────────────────
+EvalAdd(ct, ct)                     2.4       1x       0  cheapest
+EvalAdd(ct, plaintext)             10.9     4.5x       0  still free level
+EvalSub(ct, ct)                    12.5       5x       0  same as add
+EvalNegate(ct)                     14.9       6x       0  NOT truly free
+EvalMult(ct, scalar)               13.8       6x      +1  cheapest mult
+EvalMult(ct, plaintext)            31.5      13x      +1  no relin needed
+EvalMult(ct, ct)                  141.6      58x      +1  most expensive
+EvalRotate(ct, k)                  ~114      47x       0  ≈ EvalMult!
+EvalInnerProduct(n=8)             194.4      79x      +1  1mult+3rot
+
+Key ratios to remember:
+  EvalMult(ct,ct)  ≈ 58x EvalAdd
+  EvalRotate       ≈ 47x EvalAdd  ← nearly same as Mult!
+  EvalMult(ct,pt)  ≈ 13x EvalAdd  ← 5x cheaper than ct*ct
+
+For PPML circuit design:
+  Count: mults × 141ms + rotations × 114ms + adds × 2ms
+  Dense layer (n=128): 1 mult + 7 rot = 141 + 7×114 = 939ms
+  Activation (deg-3):  2 mult         = 2×141         = 282ms
+  Total 1 layer:       ≈ 1.2 seconds per ciphertext
+

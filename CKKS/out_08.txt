@@ -1,0 +1,29 @@
+=================================================================
+PRECISION LOSS PER MULTIPLICATION — DETAILED
+=================================================================
+
+Mults | Level |         Decrypted[0] |    Abs Error | Bits lost
+----------------------------------------------------------------------
+    0 |     0 |    1.000000000000000 |     0.00e+00 | ~ 0 bits lost
+    1 |     1 |    1.000000000000000 |     0.00e+00 | ~ 0 bits lost
+    2 |     2 |    1.000000000000000 |     0.00e+00 | ~ 0 bits lost
+    3 |     3 |    1.000000000000000 |     0.00e+00 | ~ 0 bits lost
+    4 |     4 |    1.000000000000000 |     0.00e+00 | ~ 0 bits lost
+    5 |     5 |    1.000000000000000 |     0.00e+00 | ~ 0 bits lost
+    6 |     6 |    1.000000000000000 |     0.00e+00 | ~ 0 bits lost
+
+=================================================================
+PARAMETER SELECTION GUIDE
+=================================================================
+
+Use case                            |   D | Δ bits |      N |  Slots | Est. final precision
+------------------------------------------------------------------------------------------
+Dot product (n=8)                   |   1 |     50 |  16384 |   8192 | ~ 40 bits (~13 decimal digits)
+Logistic regression                 |   5 |     50 |  32768 |  16384 | ~ 24 bits (~8 decimal digits)
+Degree-7 poly activation            |   4 |     50 |  16384 |   8192 | ~ 28 bits (~9 decimal digits)
+2-layer NN (depth 10)               |  10 |     50 |  32768 |  16384 | ~  4 bits (~1 decimal digits)
+Traceback (most recent call last):
+  File "/mnt/d/sun/wollongong/suncancode/ckks/08_precision_loss.py", line 87, in <module>
+    cc_tmp = openfhe.GenCryptoContext(p)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: /root/openfhe-python-packager/build/openfhe-development/src/pke/lib/scheme/gen-cryptocontext-params-validation.cpp:l.74:validateParametersForCryptocontext(): scalingModSize should be at least 14 and less than 60
