@@ -1,0 +1,29 @@
+{
+  "experiment": "exp1_bootstrap_baseline",
+  "mode": "fast",
+  "ring_dim": 16384,
+  "num_slots": 8192,
+  "scaling_mod_size": 59,
+  "first_mod_size": 60,
+  "level_budget": [
+    4,
+    4
+  ],
+  "levels_after_target": 5,
+  "bootstrap_depth_consumed": 22,
+  "total_multiplicative_depth": 27,
+  "mults_requested": 2,
+  "mults_actually_performed": 0,
+  "level_pre_bootstrap": 26,
+  "level_post_bootstrap": 21,
+  "levels_remaining_after_bootstrap": 5,
+  "precision_pre_bootstrap_bits": 40.61,
+  "precision_post_bootstrap_bits": 12.69,
+  "timings_seconds": {
+    "context_gen": 0.318,
+    "bootstrap_setup": 1.611,
+    "keygen_basic": 0.276,
+    "keygen_bootstrap": 6.508,
+    "bootstrap_eval": 10.612
+  }
+}

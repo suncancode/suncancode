@@ -1,0 +1,59 @@
+{
+  "experiment": "exp3_ppml_iterated",
+  "mode": "fast",
+  "n_dot_product": 8,
+  "log_n": 3,
+  "num_blocks": 6,
+  "ring_dim": 16384,
+  "level_budget": [
+    4,
+    4
+  ],
+  "bootstrap_depth_consumed": 22,
+  "total_multiplicative_depth": 30,
+  "total_bootstraps": 3,
+  "total_time_seconds": 27.664,
+  "avg_time_per_block_seconds": 4.611,
+  "final_precision_bits": 5.38,
+  "blocks_per_bootstrap": 2.0,
+  "bootstrap_setup_time_seconds": 1.979,
+  "bootstrap_keygen_time_seconds": 6.975,
+  "block_log": [
+    {
+      "block_index": 0,
+      "level_after_block": 23,
+      "block_time_seconds": 10.351,
+      "bootstrap_in_block": true
+    },
+    {
+      "block_index": 1,
+      "level_after_block": 25,
+      "block_time_seconds": 0.053,
+      "bootstrap_in_block": false
+    },
+    {
+      "block_index": 2,
+      "level_after_block": 23,
+      "block_time_seconds": 8.395,
+      "bootstrap_in_block": true
+    },
+    {
+      "block_index": 3,
+      "level_after_block": 25,
+      "block_time_seconds": 0.047,
+      "bootstrap_in_block": false
+    },
+    {
+      "block_index": 4,
+      "level_after_block": 23,
+      "block_time_seconds": 8.768,
+      "bootstrap_in_block": true
+    },
+    {
+      "block_index": 5,
+      "level_after_block": 25,
+      "block_time_seconds": 0.047,
+      "bootstrap_in_block": false
+    }
+  ]
+}

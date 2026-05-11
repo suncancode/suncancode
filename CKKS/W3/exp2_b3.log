@@ -1,0 +1,8 @@
+Running single budget k=3 (fast mode)...
+
+=== Running level_budget = [3, 3] ===
+  Bootstrap consumes 20 levels; total depth = 23.
+  Ring dim: 16384, slots: 8192
+  Pre-bootstrap level: 22, precision: 40.99 bits.
+  Bootstrap time: 7.88s
+  Post-bootstrap precision: 12.47 bits, levels remaining: 3.

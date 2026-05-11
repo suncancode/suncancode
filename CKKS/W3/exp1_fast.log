@@ -1,0 +1,20 @@
+Mode: REDUCED (HEStd_NotSet, N=2^14, ~80-100 bit security)
+Bootstrap depth (consumed by bootstrap itself): 22
+Total multiplicative depth: 27
+Level budget [CTS, StC]: [4, 4]
+Levels available after bootstrap (target): 5
+Ring dimension N: 16384
+Number of slots: 8192
+Context generation time: 0.32s
+EvalBootstrapSetup time: 1.61s
+Basic key generation time: 0.28s
+Bootstrap key generation time: 6.51s
+Initial level: 26, levels remaining (approx): 1
+Stopping mults at iteration 0: not enough levels left for bootstrap.
+Performed 0 squarings — level: 26
+Precision before bootstrap: 40.61 bits
+
+>>> Bootstrap time: 10.61s <<<
+
+Precision after bootstrap: 12.69 bits
+Levels remaining after bootstrap: 5

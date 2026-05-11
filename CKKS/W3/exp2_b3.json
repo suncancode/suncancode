@@ -1,0 +1,26 @@
+{
+  "experiment": "exp2_levelbudget_single",
+  "mode": "fast",
+  "budget_k": 3,
+  "result": {
+    "level_budget": [
+      3,
+      3
+    ],
+    "ring_dim": 16384,
+    "num_slots": 8192,
+    "bootstrap_depth_consumed": 20,
+    "total_multiplicative_depth": 23,
+    "level_pre_bootstrap": 22,
+    "level_post_bootstrap": 19,
+    "levels_remaining_after_bootstrap": 3,
+    "precision_pre_bootstrap_bits": 40.99,
+    "precision_post_bootstrap_bits": 12.47,
+    "timings_seconds": {
+      "context_gen": 0.276,
+      "bootstrap_setup": 2.097,
+      "keygen_bootstrap": 6.914,
+      "bootstrap_eval": 7.879
+    }
+  }
+}

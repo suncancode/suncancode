@@ -1,0 +1,21 @@
+PPML iterated experiment: n=8, blocks=6
+Bootstrap depth: 22, total depth: 30
+Ring dim: 16384, slots: 8192
+Bootstrap setup: 1.98s, keygen: 6.97s
+[block 0] insufficient levels (remaining: 1); bootstrapping...
+  bootstrap done in 10.28s, level now 21
+[block 0] level=23, time=10.35s (incl. bootstrap)
+[block 1] level=25, time=0.05s
+[block 2] insufficient levels (remaining: 5); bootstrapping...
+  bootstrap done in 8.34s, level now 21
+[block 2] level=23, time=8.40s (incl. bootstrap)
+[block 3] level=25, time=0.05s
+[block 4] insufficient levels (remaining: 5); bootstrapping...
+  bootstrap done in 8.71s, level now 21
+[block 4] level=23, time=8.77s (incl. bootstrap)
+[block 5] level=25, time=0.05s
+
+Total time for 6 blocks: 27.66s
+Total bootstraps: 3
+Final precision: 5.38 bits
+Avg time per block: 4.61s
