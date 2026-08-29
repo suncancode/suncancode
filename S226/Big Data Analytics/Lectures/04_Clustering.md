@@ -1,7 +1,4 @@
 # Advanced Analytical Theory and Methods — Clustering
-## Comprehensive Lecture Summary
-
-**Course:** CSCI446/946 Big Data Analytics | **Topic:** Clustering (Unsupervised Learning)
 
 ---
 

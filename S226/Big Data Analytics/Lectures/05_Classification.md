@@ -1,8 +1,4 @@
 # Advanced Analytical Theory and Methods — Classification
-## Comprehensive Lecture Summary
-
-**Course:** CSCI446/946 Big Data Analytics | **Topic:** Classification (Supervised Learning)
-
 ---
 
 ## 1. Overview: What is Classification?
