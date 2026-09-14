@@ -1,8 +1,4 @@
-# Association Rules — Lecture 7 Notes
-
-**Course:** CSCI446/946 Big Data Analytics, University of Wollongong
-**Topic:** Advanced Analytical Theory and Methods — Association Rules (Apriori Algorithm)
-**Source:** Lecture 7 slides, based on *Data Science and Big Data Analytics: Discovering, Analyzing, Visualizing and Presenting Data* (EMC Education Services, Wiley, 2015), Chapter 5.
+# Association Rules
 
 ---
 
@@ -153,7 +149,7 @@ Three measures are used together, each answering a different question, applied r
 ### 7.1 Confidence
 
 ```
-confidence(X → Y) = support(X ∪ Y) / support(X)
+confidence(X → Y) = support(X ∩ Y) / support(X)
 ```
 
 This is the **conditional probability** P(Y | X): of the transactions that contain X, what fraction also contain Y.
